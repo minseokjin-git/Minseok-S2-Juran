@@ -48,55 +48,64 @@ input, textarea { outline: none; }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes sheetDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
 @keyframes splashInfoUp { from { transform: translateY(calc(50vh - 130px)); } to { transform: translateY(0); } }
+@keyframes acctInR { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes acctInL { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes marqX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes moodSnow {
-  0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg); opacity: 0; }
+  0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
   8% { opacity: 0.8; }
+  25% { transform: translate3d(1vw, 22vh, 0) rotate(80deg) rotateY(150deg) rotateX(30deg); }
+  50% { transform: translate3d(-4vw, 49vh, 0) rotate(150deg) rotateY(300deg) rotateX(-25deg); }
+  75% { transform: translate3d(-8vw, 76vh, 0) rotate(225deg) rotateY(460deg) rotateX(20deg); }
   85% { opacity: 0.7; }
-  100% { transform: translate3d(-12vw, 104vh, 0) rotate(300deg); opacity: 0; }
+  100% { transform: translate3d(-12vw, 104vh, 0) rotate(300deg) rotateY(620deg) rotateX(0deg); opacity: 0; }
 }
 @keyframes moodSway { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
 @keyframes moodSnowMelt {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) scale(1); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) scale(1); opacity: 0; }
   10% { opacity: 0.85; }
+  28% { transform: translate3d(-1vw, 25vh, 0) rotate(100deg) rotateY(200deg) scale(0.85); }
   40% { opacity: 0.6; }
-  56% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) scale(0.55); opacity: 0; }
-  100% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) scale(0.55); opacity: 0; }
+  56% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) rotateY(390deg) scale(0.55); opacity: 0; }
+  100% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) rotateY(390deg) scale(0.55); opacity: 0; }
 }
 @keyframes moodSnowNear {
-  0% { transform: translate3d(8vw, -8vh, 0) rotate(0deg); opacity: 0; }
+  0% { transform: translate3d(8vw, -8vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
   6% { opacity: 0.95; }
+  30% { transform: translate3d(2vw, 27vh, 0) rotate(-100deg) rotateY(-200deg) rotateX(35deg); }
+  60% { transform: translate3d(-7vw, 62vh, 0) rotate(-210deg) rotateY(-400deg) rotateX(-30deg); }
   85% { opacity: 0.85; }
-  100% { transform: translate3d(-18vw, 106vh, 0) rotate(-320deg); opacity: 0; }
+  100% { transform: translate3d(-18vw, 106vh, 0) rotate(-320deg) rotateY(-640deg) rotateX(0deg); opacity: 0; }
 }
 @keyframes moodSnowDrift {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
   8% { opacity: 0.8; }
-  25% { transform: translate3d(-5vw, 22vh, 0) rotate(90deg); }
-  50% { transform: translate3d(2vw, 46vh, 0) rotate(170deg); }
-  75% { transform: translate3d(-9vw, 74vh, 0) rotate(250deg); }
+  25% { transform: translate3d(-5vw, 22vh, 0) rotate(90deg) rotateY(160deg) rotateX(-30deg); }
+  50% { transform: translate3d(2vw, 46vh, 0) rotate(170deg) rotateY(340deg) rotateX(25deg); }
+  75% { transform: translate3d(-9vw, 74vh, 0) rotate(250deg) rotateY(520deg) rotateX(-20deg); }
   94% { opacity: 0.65; }
-  100% { transform: translate3d(-14vw, 105vh, 0) rotate(330deg); opacity: 0; }
+  100% { transform: translate3d(-14vw, 105vh, 0) rotate(330deg) rotateY(700deg) rotateX(0deg); opacity: 0; }
 }
 @keyframes moodSnowLow {
-  0% { transform: translate3d(8vw, 58vh, 0) rotate(0deg); opacity: 0; }
+  0% { transform: translate3d(8vw, 58vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
   15% { opacity: 0.42; }
-  50% { transform: translate3d(-3vw, 78vh, 0) rotate(130deg); opacity: 0.36; }
+  50% { transform: translate3d(-3vw, 78vh, 0) rotate(130deg) rotateY(220deg); opacity: 0.36; }
   85% { opacity: 0.22; }
-  100% { transform: translate3d(-11vw, 102vh, 0) rotate(240deg); opacity: 0; }
+  100% { transform: translate3d(-11vw, 102vh, 0) rotate(240deg) rotateY(420deg); opacity: 0; }
 }
 @keyframes moodSnowTop {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) scale(1); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) scale(1); opacity: 0; }
   12% { opacity: 0.85; }
-  30% { transform: translate3d(-2vw, 16vh, 0) rotate(110deg) scale(0.85); opacity: 0.6; }
-  44% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) scale(0.45); opacity: 0; }
-  100% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) scale(0.45); opacity: 0; }
+  30% { transform: translate3d(-2vw, 16vh, 0) rotate(110deg) rotateY(240deg) scale(0.85); opacity: 0.6; }
+  44% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) rotateY(380deg) scale(0.45); opacity: 0; }
+  100% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) rotateY(380deg) scale(0.45); opacity: 0; }
 }
 </style>
 <script>
 document.addEventListener('gesturestart', function (e) { e.preventDefault(); }, { passive: false });
 document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t || (t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA')) e.preventDefault(); });
 </script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"></script>
 </helmet>
 <div style="min-height: 100vh; background: #e9e7e2;">
   <div style="max-width: 460px; margin: 0 auto; background: #f7f6f2; box-shadow: 0 0 40px rgba(50,45,35,0.16); overflow: clip;">
@@ -106,23 +115,23 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <img ref="{{ heroImgRef }}" src="images/opt-hero.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45;">
-          <span style="position: absolute; top: 0; left: 28%; width: 9px; height: 9px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(201,137,63,0.55), rgba(168,90,50,0.5)); filter: blur(1.6px); animation: moodSnowDrift 13s linear 1s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 62%; width: 7px; height: 7px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(178,106,53,0.5), rgba(140,80,45,0.45)); filter: blur(1.8px); animation: moodSnow 16s linear 6s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 85%; width: 10px; height: 10px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(214,160,84,0.5), rgba(178,106,53,0.45)); filter: blur(2px); animation: moodSnowDrift 18s linear 10s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 28%; width: 15px; height: 15px; background: url('images/leaf-d.png') center / contain no-repeat; opacity: 0; filter: blur(1.6px); animation: moodSnowDrift 13s linear 1s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 62%; width: 13px; height: 13px; background: url('images/leaf-c.png') center / contain no-repeat; opacity: 0; filter: blur(1.8px); animation: moodSnow 16s linear 6s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 85%; width: 16px; height: 16px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; filter: blur(2px); animation: moodSnowDrift 18s linear 10s infinite;"></span>
         </div>
         </sc-if>
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,18,15,0.12) 0%, rgba(20,18,15,0) 42%, rgba(20,18,15,0.52) 100%);"></div>
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
 <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;">
-          <span style="position: absolute; top: 0; left: 8%; width: 12px; height: 12px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(214,160,84,0.85), rgba(178,106,53,0.8)); animation: moodSnow 9s linear 0s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 37%; width: 14px; height: 14px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(201,137,63,0.85), rgba(168,90,50,0.8)); animation: moodSnowMelt 12s linear 4.8s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 64%; width: 16px; height: 16px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(219,168,92,0.9), rgba(178,106,53,0.85)); animation: moodSnowNear 7s linear 2.5s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 88%; width: 10px; height: 10px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(214,160,84,0.8), rgba(176,113,58,0.75)); animation: moodSnow 13s linear 7.7s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 22%; width: 11px; height: 11px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(207,148,72,0.85), rgba(170,96,52,0.8)); animation: moodSnowDrift 10.5s linear 6.2s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 53%; width: 8px; height: 8px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(201,137,63,0.75), rgba(160,88,48,0.7)); animation: moodSnowDrift 14.5s linear 1.6s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 78%; width: 13px; height: 13px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(219,168,92,0.85), rgba(170,96,52,0.8)); animation: moodSnowTop 8s linear 3.4s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 45%; width: 9px; height: 9px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(190,120,60,0.6), rgba(150,84,46,0.55)); filter: blur(0.8px); animation: moodSnowLow 11s linear 5.5s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 15%; width: 10px; height: 10px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(190,120,60,0.55), rgba(150,84,46,0.5)); filter: blur(1px); animation: moodSnowLow 14s linear 9s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 8%; width: 20px; height: 20px; background: url('images/leaf-c.png') center / contain no-repeat; opacity: 0; animation: moodSnow 9s linear 0s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 37%; width: 22px; height: 22px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; animation: moodSnowMelt 12s linear 4.8s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 64%; width: 26px; height: 26px; background: url('images/leaf-h.png') center / contain no-repeat; opacity: 0; animation: moodSnowNear 7s linear 2.5s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 88%; width: 17px; height: 17px; background: url('images/leaf-b.png') center / contain no-repeat; opacity: 0; animation: moodSnow 13s linear 7.7s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 22%; width: 18px; height: 18px; background: url('images/leaf-a.png') center / contain no-repeat; opacity: 0; animation: moodSnowDrift 10.5s linear 6.2s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 53%; width: 15px; height: 15px; background: url('images/leaf-f.png') center / contain no-repeat; opacity: 0; animation: moodSnowDrift 14.5s linear 1.6s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 78%; width: 21px; height: 21px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; animation: moodSnowTop 8s linear 3.4s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 45%; width: 16px; height: 16px; background: url('images/leaf-e.png') center / contain no-repeat; opacity: 0; filter: blur(0.8px); animation: moodSnowLow 11s linear 5.5s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 15%; width: 17px; height: 17px; background: url('images/leaf-d.png') center / contain no-repeat; opacity: 0; filter: blur(1px); animation: moodSnowLow 14s linear 9s infinite;"></span>
         </div>
         </sc-if>
       </header>
@@ -198,6 +207,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <span style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><span style="font-family: 'Univers LT', 'Cormorant Garamond', serif; font-size: 27px; font-weight: 500; color: #3b3833; font-variant-numeric: tabular-nums;" ref="{{ cdSRef }}">{{ cdS }}</span><span style="font-size: 10px; letter-spacing: 0.2em; color: #b3ab9c;">SEC</span></span>
         </div>
         <p style="margin: 0; font-size: 14px; font-weight: 300; color: #7c766b;">{{ ddayLine }}</p>
+        <button onClick="{{ addCal }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 26px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #3b3833; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; box-shadow: 0 3px 12px rgba(60,55,45,0.06);"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#8b867c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="12" y1="14" x2="12" y2="18"></line><line x1="10" y1="16" x2="14" y2="16"></line></svg>캘린더에 저장</button>
       </section>
 
       <section data-screen-label="오시는 길" data-reveal="1" style="display: flex; flex-direction: column; gap: 22px; padding: 100px 28px 0;">
@@ -285,17 +295,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           </div>
         </sc-for>
         <sc-if value="{{ gbEmptyShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; text-align: center; font-size: 13.5px; font-weight: 300; color: #9d968a;">첫 번째 축하 글을 남겨주세요.</p></sc-if>
-        <sc-if value="{{ gbFormShown }}" hint-placeholder-val="{{ false }}">
-          <div style="display: flex; flex-direction: column; gap: 12px; background: #ffffff; border: 1px solid #ece8df; border-radius: 12px; padding: 20px;">
-            <input type="text" value="{{ gbNameVal }}" onChange="{{ onGbName }}" placeholder="성함" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">
-            <textarea value="{{ gbMsgVal }}" onChange="{{ onGbMsg }}" placeholder="축하 메시지를 남겨주세요" rows="3" style="width: 100%; box-sizing: border-box; padding: 12px 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; resize: none; line-height: 1.7;"></textarea>
-            <sc-if value="{{ gbErrShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; color: #b6423a; text-align: center;">{{ gbErr }}</p></sc-if>
-            <button onClick="{{ gbSubmit }}" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 10px; border: none; background: #3b3833; color: #f7f6f2; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">등록하기</button>
-          </div>
-        </sc-if>
-        <sc-if value="{{ gbFormHidden }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ gbOpenForm }}" style="align-self: center; display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #3b3833; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">작성하기</button>
-        </sc-if>
+        <button onClick="{{ gbOpenForm }}" style="align-self: center; display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #3b3833; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">작성하기</button>
       </section>
 
       <sc-if value="{{ rsvpShown }}" hint-placeholder-val="{{ true }}">
@@ -321,7 +321,8 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; font-weight: 600; color: #3b3833;">마음 전하실 곳</h2>
           <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #7c766b; line-height: 1.8;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
         </div>
-        <div style="align-self: center; display: flex; background: #ecebe5; border-radius: 999px; padding: 4px;">
+        <div style="align-self: center; position: relative; display: grid; grid-template-columns: 1fr 1fr; background: #ecebe5; border-radius: 999px; padding: 4px;">
+          <span aria-hidden="true" style="{{ acctPillSt }}"></span>
           <button onClick="{{ acctGroom }}" style="{{ acctGroomStyle }}">신랑측</button>
           <button onClick="{{ acctBride }}" style="{{ acctBrideStyle }}">신부측</button>
         </div>
@@ -339,6 +340,10 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
             </sc-for>
           </div>
         </div>
+      </section>
+
+      <section data-screen-label="공유" data-reveal="1" style="display: flex; justify-content: center; padding: 90px 28px 0;">
+        <button onClick="{{ shareKakao }}" style="display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 0 30px; border-radius: 10px; border: none; background: #fae100; color: #391b1b; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; box-shadow: 0 4px 14px rgba(60,55,45,0.12);"><svg viewBox="0 0 24 24" width="19" height="19" fill="#391b1b"><path d="M12 3C6.48 3 2 6.54 2 10.9c0 2.8 1.86 5.25 4.66 6.64-.2.75-.76 2.78-.87 3.21-.14.54.2.53.42.39.17-.11 2.68-1.82 3.77-2.56.65.1 1.32.15 2.02.15 5.52 0 10-3.54 10-7.83S17.52 3 12 3z"></path></svg>카카오톡으로 청첩장 보내기</button>
       </section>
 
       <footer style="display: flex; flex-direction: column; gap: 0; padding: 110px 0 0;">
@@ -371,7 +376,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b3ab9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="2" y1="2" x2="22" y2="22"></line></svg></sc-if>
       </button>
     </sc-if>
-    <button onClick="{{ zoomCycle }}" aria-label="글자 크기" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16); color: #3b3833; font-size: 15px; font-weight: 700; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">가</button>
+
   </div>
 
   <sc-if value="{{ splashShown }}" hint-placeholder-val="{{ false }}">
@@ -385,6 +390,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <div style="display: flex; flex-direction: column; gap: 5px; text-align: center; color: rgba(255,255,255,0.94); font-size: 14px; font-weight: 400; text-shadow: 0 1px 8px rgba(150,60,50,0.3); animation: splashInfoUp 1.8s cubic-bezier(0.3, 0.7, 0.25, 1) 2.3s both;">
           <p style="margin: 0;">2026. 10. 24. 토요일, 오후 5시</p>
           <p style="margin: 0;">서울대학교 이라운지, 310동</p>
+          </div>
         </div>
       </div>
     </div>
@@ -412,6 +418,22 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 
   <sc-if value="{{ toastShown }}" hint-placeholder-val="{{ false }}">
     <div role="status" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 130; background: #3b3833; color: #f7f6f2; padding: 13px 22px; border-radius: 999px; font-size: 14px; font-weight: 400; white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.25); animation: fadeIn 0.2s ease;">{{ toastMsg }}</div>
+  </sc-if>
+
+  <sc-if value="{{ gbFormShown }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="방명록 작성" style="position: fixed; inset: 0; z-index: 110; display: flex; align-items: flex-end; justify-content: center;">
+      <div onClick="{{ gbClose }}" style="position: absolute; inset: 0; background: rgba(25,22,18,0.45); animation: {{ gbBackAnim }};"></div>
+      <div style="position: relative; width: min(460px, 100vw); box-sizing: border-box; background: #ffffff; border-radius: 18px 18px 0 0; padding: 22px 26px calc(28px + env(safe-area-inset-bottom)); animation: {{ gbSheetAnim }}; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 600; color: #3b3833;">방명록 작성</p>
+          <button onClick="{{ gbClose }}" aria-label="닫기" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: none; background: none; cursor: pointer; color: #9d968a; font-size: 20px;">✕</button>
+        </div>
+        <input type="text" value="{{ gbNameVal }}" onChange="{{ onGbName }}" placeholder="성함" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">
+        <textarea value="{{ gbMsgVal }}" onChange="{{ onGbMsg }}" placeholder="축하 메시지를 남겨주세요" rows="3" style="width: 100%; box-sizing: border-box; padding: 12px 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; resize: none; line-height: 1.7;"></textarea>
+        <sc-if value="{{ gbErrShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; color: #b6423a; text-align: center;">{{ gbErr }}</p></sc-if>
+        <button onClick="{{ gbSubmit }}" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 10px; border: none; background: #3b3833; color: #f7f6f2; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">등록하기</button>
+      </div>
+    </div>
   </sc-if>
 
   <sc-if value="{{ contactShown }}" hint-placeholder-val="{{ false }}">
@@ -509,9 +531,9 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
   <audio ref="{{ audioRef }}" src="uploads/bgm.mp3" loop="loop" preload="none" style="display: none;"></audio>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;bgm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;rsvpEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;snow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;연출&quot;},&quot;kakaoJsKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;67e7355af9681e41e0c92e9a825baa29&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;기능&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;bgm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;rsvpEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;snow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;연출&quot;},&quot;kakaoJsKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;67e7355af9681e41e0c92e9a825baa29&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;kakaoCalEventId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;기능&quot;}}">
 class Component extends DCLogic {
-  state = { zoom: 1, playing: false, lbIdx: 0, lbOpen: false, toast: '', contactOpen: false, rsvpOpen: false, rsvpDone: false, rsvpSaved: null, rsvpAttend: 'yes', rsvpName: '', rsvpSide: 'groom', rsvpPhone: '', rsvpMeal: 'yes', rsvpMemo: '', rsvpErr: '', acctSide: 'groom', gbOpen: false, gbName: '', gbMsg: '', gbErr: '', gbList: null, sketchOpen: false, kakaoFail: false, galIdx: 0, acctFade: false, splash: true, splashClosing: false, promo: false, rsvpClosing: false, contactClosing: false };
+  state = { zoom: 1, playing: false, lbIdx: 0, lbOpen: false, toast: '', contactOpen: false, rsvpOpen: false, rsvpDone: false, rsvpSaved: null, rsvpAttend: 'yes', rsvpName: '', rsvpSide: 'groom', rsvpPhone: '', rsvpMeal: 'yes', rsvpMemo: '', rsvpErr: '', acctSide: 'groom', gbOpen: false, gbName: '', gbMsg: '', gbErr: '', gbList: null, sketchOpen: false, kakaoFail: false, galIdx: 0, acctFade: false, splash: true, splashClosing: false, promo: false, rsvpClosing: false, contactClosing: false, gbClosing: false };
   _closePromo() {
     if (this.state.promoClosing) return;
     this.setState({ promoClosing: true });
@@ -524,15 +546,14 @@ class Component extends DCLogic {
     setTimeout(() => {
       let hideToday = false;
       try { hideToday = localStorage.getItem('wd_promo_hide_v2') === new Date().toDateString(); } catch (e) {}
-      // 참석의사를 이미 제출했어도 팝업은 표시 (오늘 하루 보지 않기만 존중)
-      this.setState({ splash: false, promo: !hideToday && this.props.rsvpEnabled !== false });
+      this.setState({ splash: false, promo: !this.state.rsvpDone && !hideToday && this.props.rsvpEnabled !== false });
     }, 600);
   }
   acctRowRef = React.createRef();
   switchAcct(side) {
     if (this.state.acctSide === side || this.state.acctFade) return;
-    this.setState({ acctFade: true });
-    setTimeout(() => this.setState({ acctSide: side, acctFade: false }), 240);
+    this.setState({ acctFade: true, acctDir: side === 'bride' ? 1 : -1 });
+    setTimeout(() => this.setState({ acctSide: side, acctFade: false }), 230);
   }
   audioRef = React.createRef();
   cdDRef = React.createRef(); cdHRef = React.createRef(); cdMRef = React.createRef(); cdSRef = React.createRef();
@@ -728,6 +749,24 @@ class Component extends DCLogic {
     }
   }
   kakaoOn() { return !!(this.props.kakaoJsKey || '').trim() && !this.state.kakaoFail; }
+  kakaoShare() {
+    const key = (this.props.kakaoJsKey || '').trim();
+    const K = window.Kakao;
+    if (!key || !K || !K.Share) { this.showToast('카카오 공유를 사용할 수 없습니다'); return; }
+    try { if (!K.isInitialized()) K.init(key); } catch (e) {}
+    const url = 'https://minseokjin-git.github.io/Minseok-S2-Juran/';
+    const content = {
+      title: '[속보] 진민석 ♥ 김주란 결혼',
+      description: '2026년 10월 24일 토요일 오후 5시 · 서울대학교 이라운지',
+      imageUrl: url + 'images/opt-hero.jpg',
+      link: { mobileWebUrl: url, webUrl: url }
+    };
+    const evId = (this.props.kakaoCalEventId || '').trim();
+    try {
+      if (evId) K.Share.sendDefault({ objectType: 'calendar', idType: 'event', id: evId, content, buttons: [{ title: '청첩장 보기', link: content.link }] });
+      else K.Share.sendDefault({ objectType: 'feed', content, buttons: [{ title: '청첩장 보기', link: content.link }] });
+    } catch (e) { this.showToast('공유 실행 중 문제가 발생했습니다'); }
+  }
   initKakao() {
     const key = (this.props.kakaoJsKey || '').trim();
     if (!key) return;
@@ -814,7 +853,7 @@ class Component extends DCLogic {
     return { display: 'inline-block', width: '16px', height: '16px', borderRadius: '50%', border: on ? '5px solid #3b3833' : '1.5px solid #cfc9bd', boxSizing: 'border-box', background: '#fff' };
   }
   tab(on) {
-    return { minHeight: '42px', padding: '0 26px', borderRadius: '999px', border: 'none', background: on ? '#ffffff' : 'none', color: on ? '#3b3833' : '#9d968a', fontSize: '14px', fontWeight: on ? 600 : 400, cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif", boxShadow: on ? '0 2px 8px rgba(60,55,45,0.12)' : 'none' };
+    return { position: 'relative', zIndex: 1, minHeight: '42px', padding: '0 26px', borderRadius: '999px', border: 'none', background: 'none', color: on ? '#3b3833' : '#9d968a', fontSize: '14px', transition: 'color 0.25s ease', fontWeight: on ? 600 : 400, cursor: 'pointer', fontFamily: "'Noto Sans KR', sans-serif", boxShadow: on ? '0 2px 8px rgba(60,55,45,0.12)' : 'none' };
   }
   renderVals() {
     const s = this.state;
@@ -889,7 +928,14 @@ class Component extends DCLogic {
       gbList: (s.gbList || []).map(g => ({ name: g.name, message: g.message, when: this.fmtWhen(g.created_at) })),
       gbEmptyShown: Array.isArray(s.gbList) && s.gbList.length === 0,
       gbFormShown: !!s.gbOpen, gbFormHidden: !s.gbOpen,
-      gbOpenForm: () => this.setState({ gbOpen: true }),
+      gbOpenForm: () => this.setState({ gbOpen: true, gbErr: '' }),
+      gbClose: () => {
+        if (s.gbClosing) return;
+        this.setState({ gbClosing: true });
+        setTimeout(() => this.setState({ gbOpen: false, gbClosing: false }), 400);
+      },
+      gbSheetAnim: s.gbClosing ? 'sheetDown 0.4s cubic-bezier(0.55, 0, 0.8, 0.4) both' : 'sheetUp 0.32s cubic-bezier(0.22, 0.9, 0.3, 1)',
+      gbBackAnim: s.gbClosing ? 'fadeOut 0.35s ease both' : 'fadeIn 0.2s ease',
       gbNameVal: s.gbName, onGbName: e => this.setState({ gbName: e.target.value, gbErr: '' }),
       gbMsgVal: s.gbMsg, onGbMsg: e => this.setState({ gbMsg: e.target.value, gbErr: '' }),
       gbErr: s.gbErr, gbErrShown: !!s.gbErr, gbSubmit: this.gbSubmit,
@@ -921,10 +967,29 @@ class Component extends DCLogic {
       rsvpPhoneVal: s.rsvpPhone, onRsvpPhone: e => this.setState({ rsvpPhone: e.target.value }),
       rsvpMemoVal: s.rsvpMemo, onRsvpMemo: e => this.setState({ rsvpMemo: e.target.value }),
       rsvpErr: s.rsvpErr, rsvpErrShown: !!s.rsvpErr, rsvpSubmit: this.rsvpSubmit,
+      shareKakao: () => this.kakaoShare(),
+      addCal: () => {
+        const title = '진민석 ♥ 김주란 결혼식';
+        const loc = '서울대학교 이라운지 (관악캠퍼스 310동)';
+        const desc = '2026년 10월 24일 토요일 오후 5시';
+        if (/android/i.test(navigator.userAgent)) {
+          window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=20261024T080000Z/20261024T100000Z&location=' + encodeURIComponent(loc) + '&details=' + encodeURIComponent(desc), '_blank');
+          return;
+        }
+        const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//wedding//KR', 'BEGIN:VEVENT', 'UID:minseok-juran-20261024@wedding', 'DTSTAMP:20260901T000000Z', 'DTSTART;TZID=Asia/Seoul:20261024T170000', 'DTEND;TZID=Asia/Seoul:20261024T190000', 'SUMMARY:' + title, 'LOCATION:' + loc, 'DESCRIPTION:' + desc, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+        a.download = '민석주란_결혼식.ics';
+        document.body.appendChild(a); a.click(); a.remove();
+        this.showToast('일정 파일이 저장되었습니다. 열어서 캘린더에 추가하세요');
+      },
       acctGroom: () => this.switchAcct('groom'), acctBride: () => this.switchAcct('bride'),
-      acctTxtSt: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', opacity: s.acctFade ? 0 : 1, transition: 'opacity 0.22s ease' },
+      acctTxtSt: s.acctFade
+        ? { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', opacity: 0, transform: 'translateX(' + (-(s.acctDir || 1) * 40) + 'px)', transition: 'opacity 0.22s ease, transform 0.22s ease' }
+        : { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', opacity: 1, animation: ((s.acctDir || 1) === 1 ? 'acctInR' : 'acctInL') + ' 0.3s cubic-bezier(0.22, 0.9, 0.3, 1)' },
       acctRowRef: this.acctRowRef,
       acctGroomStyle: this.tab(s.acctSide === 'groom'), acctBrideStyle: this.tab(s.acctSide === 'bride'),
+      acctPillSt: { position: 'absolute', top: '4px', bottom: '4px', left: '4px', width: 'calc(50% - 4px)', borderRadius: '999px', background: '#ffffff', boxShadow: '0 2px 8px rgba(60,55,45,0.1)', transform: s.acctSide === 'bride' ? 'translateX(100%)' : 'translateX(0)', transition: 'transform 0.32s cubic-bezier(0.22, 0.9, 0.3, 1)' },
       acctCards: acct.map(a => ({ who: a.who, name: a.name, bank: a.bank, num: a.num, whoSt: { color: s.acctSide === 'groom' ? '#7f92b3' : '#c08b84', fontWeight: 500 }, copy: () => this.copy(a.num, (s.acctSide === 'groom' ? '신랑측 ' : '신부측 ') + a.who) })),
       toastShown: !!s.toast, toastMsg: s.toast,
       splashShown: !!s.splash,
