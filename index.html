@@ -52,13 +52,13 @@ input, textarea { outline: none; }
 @keyframes acctInL { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes marqX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes moodSnow {
-  0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
+  0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
   8% { opacity: 0.8; }
-  25% { transform: translate3d(1vw, 22vh, 0) rotate(80deg) rotateY(150deg) rotateX(30deg); }
-  50% { transform: translate3d(-4vw, 49vh, 0) rotate(150deg) rotateY(300deg) rotateX(-25deg); }
-  75% { transform: translate3d(-8vw, 76vh, 0) rotate(225deg) rotateY(460deg) rotateX(20deg); }
+  25% { transform: translate3d(1vw, 22vh, 0) rotate(80deg) rotateY(150deg); }
+  50% { transform: translate3d(-4vw, 49vh, 0) rotate(150deg) rotateY(300deg); }
+  75% { transform: translate3d(-8vw, 76vh, 0) rotate(225deg) rotateY(460deg); }
   85% { opacity: 0.7; }
-  100% { transform: translate3d(-12vw, 104vh, 0) rotate(300deg) rotateY(620deg) rotateX(0deg); opacity: 0; }
+  100% { transform: translate3d(-12vw, 104vh, 0) rotate(300deg) rotateY(620deg); opacity: 0; }
 }
 @keyframes moodSway { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
 @keyframes moodSnowMelt {
@@ -70,21 +70,21 @@ input, textarea { outline: none; }
   100% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) rotateY(390deg) scale(0.55); opacity: 0; }
 }
 @keyframes moodSnowNear {
-  0% { transform: translate3d(8vw, -8vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
+  0% { transform: translate3d(8vw, -8vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
   6% { opacity: 0.95; }
-  30% { transform: translate3d(2vw, 27vh, 0) rotate(-100deg) rotateY(-200deg) rotateX(35deg); }
-  60% { transform: translate3d(-7vw, 62vh, 0) rotate(-210deg) rotateY(-400deg) rotateX(-30deg); }
+  30% { transform: translate3d(2vw, 27vh, 0) rotate(-100deg) rotateY(-200deg); }
+  60% { transform: translate3d(-7vw, 62vh, 0) rotate(-210deg) rotateY(-400deg); }
   85% { opacity: 0.85; }
-  100% { transform: translate3d(-18vw, 106vh, 0) rotate(-320deg) rotateY(-640deg) rotateX(0deg); opacity: 0; }
+  100% { transform: translate3d(-18vw, 106vh, 0) rotate(-320deg) rotateY(-640deg); opacity: 0; }
 }
 @keyframes moodSnowDrift {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) rotateX(0deg); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
   8% { opacity: 0.8; }
-  25% { transform: translate3d(-5vw, 22vh, 0) rotate(90deg) rotateY(160deg) rotateX(-30deg); }
-  50% { transform: translate3d(2vw, 46vh, 0) rotate(170deg) rotateY(340deg) rotateX(25deg); }
-  75% { transform: translate3d(-9vw, 74vh, 0) rotate(250deg) rotateY(520deg) rotateX(-20deg); }
+  25% { transform: translate3d(-5vw, 22vh, 0) rotate(90deg) rotateY(160deg); }
+  50% { transform: translate3d(2vw, 46vh, 0) rotate(170deg) rotateY(340deg); }
+  75% { transform: translate3d(-9vw, 74vh, 0) rotate(250deg) rotateY(520deg); }
   94% { opacity: 0.65; }
-  100% { transform: translate3d(-14vw, 105vh, 0) rotate(330deg) rotateY(700deg) rotateX(0deg); opacity: 0; }
+  100% { transform: translate3d(-14vw, 105vh, 0) rotate(330deg) rotateY(700deg); opacity: 0; }
 }
 @keyframes moodSnowLow {
   0% { transform: translate3d(8vw, 58vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
@@ -116,7 +116,6 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45;">
           <span style="position: absolute; top: 0; left: 28%; width: 15px; height: 15px; background: url('images/leaf-d.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 62%; width: 13px; height: 13px; background: url('images/leaf-c.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnow 16s linear 6s infinite;"></span>
           <span style="position: absolute; top: 0; left: 85%; width: 16px; height: 16px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 18s linear 10s infinite;"></span>
         </div>
         </sc-if>
@@ -128,10 +127,8 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <span style="position: absolute; top: 0; left: 64%; width: 26px; height: 26px; background: url('images/leaf-h.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowNear 7s linear 2.5s infinite;"></span>
           <span style="position: absolute; top: 0; left: 88%; width: 17px; height: 17px; background: url('images/leaf-b.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnow 13s linear 7.7s infinite;"></span>
           <span style="position: absolute; top: 0; left: 22%; width: 18px; height: 18px; background: url('images/leaf-a.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 10.5s linear 6.2s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 53%; width: 15px; height: 15px; background: url('images/leaf-f.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 14.5s linear 1.6s infinite;"></span>
           <span style="position: absolute; top: 0; left: 78%; width: 21px; height: 21px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowTop 8s linear 3.4s infinite;"></span>
           <span style="position: absolute; top: 0; left: 45%; width: 16px; height: 16px; background: url('images/leaf-e.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowLow 11s linear 5.5s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 15%; width: 17px; height: 17px; background: url('images/leaf-d.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowLow 14s linear 9s infinite;"></span>
         </div>
         </sc-if>
       </header>
@@ -342,10 +339,6 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         </div>
       </section>
 
-      <section data-screen-label="공유" data-reveal="1" style="display: flex; justify-content: center; padding: 90px 28px 0;">
-        <button onClick="{{ shareKakao }}" style="display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 0 30px; border-radius: 10px; border: none; background: #fae100; color: #391b1b; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; box-shadow: 0 4px 14px rgba(60,55,45,0.12);"><svg viewBox="0 0 24 24" width="19" height="19" fill="#391b1b"><path d="M12 3C6.48 3 2 6.54 2 10.9c0 2.8 1.86 5.25 4.66 6.64-.2.75-.76 2.78-.87 3.21-.14.54.2.53.42.39.17-.11 2.68-1.82 3.77-2.56.65.1 1.32.15 2.02.15 5.52 0 10-3.54 10-7.83S17.52 3 12 3z"></path></svg>카카오톡으로 청첩장 보내기</button>
-      </section>
-
       <footer style="display: flex; flex-direction: column; gap: 0; padding: 110px 0 0;">
         <div style="overflow: hidden; border-top: 1px solid #e3ded4; border-bottom: 1px solid #e3ded4; padding: 14px 0; background: #f7f6f2;">
           <div ref="{{ marqRef }}" style="display: flex; white-space: nowrap; width: max-content; animation: marqX 22s linear infinite; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0.14em; font-size: 15px; font-weight: 600; letter-spacing: 0.24em; color: #a8433c;">
@@ -385,7 +378,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <img src="images/splash-blur.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
         <div style="position: absolute; inset: 0; background: linear-gradient(185deg, rgba(243,205,150,0.55) 0%, rgba(238,142,130,0.62) 55%, rgba(233,110,105,0.78) 100%);"></div>
         <button onClick="{{ splashSkip }}" style="position: absolute; top: 16px; right: 16px; display: flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; border-radius: 8px; border: none; background: rgba(80,70,60,0.42); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">SKIP →</button>
-        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center;">
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; pointer-events: none;">
           <p ref="{{ splashTextRef }}" style="margin: 0; min-height: 1.6em; font-size: 17.5px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 10px rgba(150,60,50,0.35);"></p>
           <div style="display: flex; flex-direction: column; gap: 5px; text-align: center; color: rgba(255,255,255,0.94); font-size: 14px; font-weight: 400; text-shadow: 0 1px 8px rgba(150,60,50,0.3); animation: splashInfoUp 1.8s cubic-bezier(0.3, 0.7, 0.25, 1) 2.3s both;">
           <p style="margin: 0;">2026. 10. 24. 토요일, 오후 5시</p>
@@ -710,7 +703,7 @@ class Component extends DCLogic {
       document.body.removeChild(meas);
       if (!w100) return;
       const ns = Math.min(100 * ((t.clientWidth * 1.01) / w100), 165);
-      t.querySelectorAll('p').forEach((p, i) => { p.style.fontSize = (i === 1 ? ns * 0.93 : ns) + 'px'; });
+      t.querySelectorAll('p').forEach((p, i) => { p.style.fontSize = (i === 1 ? ns * 0.87 : ns) + 'px'; });
     };
     setTimeout(fitTitle, 60); // 폰트 로드 전에도 즉시 맞춤 (스크롤 중 커지는 현상 방지)
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(fitTitle, 100));
