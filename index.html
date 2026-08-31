@@ -18,10 +18,14 @@
 <link href="https://fonts.cdnfonts.com/css/belgiansignature" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Cormorant+Garamond:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
 <style>
-@font-face { font-family: 'Univers LT'; src: url('uploads/Univers LT Std 55 Roman.otf') format('opentype'); font-weight: 300 500; font-display: swap; }
-@font-face { font-family: 'Univers LT'; src: url('uploads/Univers LT Std 65 Bold.otf') format('opentype'); font-weight: 600 800; font-display: swap; }
-@font-face { font-family: 'Yoon Gothic'; src: url('uploads/YoonGothicPro720.ttf') format('truetype'); font-weight: 300 500; font-display: swap; }
-@font-face { font-family: 'Yoon Gothic'; src: url('uploads/YoonGothicPro740.ttf') format('truetype'); font-weight: 600 800; font-display: swap; }
+@font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_20g.otf') format('opentype'); font-weight: 100 300; font-display: swap; }
+@font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_40g.otf') format('opentype'); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_60g.otf') format('opentype'); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_80g.otf') format('opentype'); font-weight: 800 900; font-display: swap; }
+@font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_20g.otf') format('opentype'); font-weight: 100 300; font-display: swap; }
+@font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_40g.otf') format('opentype'); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_60g.otf') format('opentype'); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_80g.otf') format('opentype'); font-weight: 800 900; font-display: swap; }
 html, body { margin: 0; padding: 0; background: #e9e7e2; }
 body { font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; -webkit-text-size-adjust: 100%; word-break: keep-all; touch-action: manipulation; }
 img { -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none; pointer-events: none; }
@@ -85,11 +89,11 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 </script>
 </helmet>
 <div style="min-height: 100vh; background: #e9e7e2;">
-  <div style="max-width: 460px; margin: 0 auto; background: #f7f6f2; box-shadow: 0 0 40px rgba(50,45,35,0.16); overflow: hidden;">
+  <div style="max-width: 460px; margin: 0 auto; background: #f7f6f2; box-shadow: 0 0 40px rgba(50,45,35,0.16); overflow: clip;">
     <div style="zoom: {{ zoom }};">
 
-      <header data-screen-label="인트로" style="position: relative; height: 100svh; max-height: 940px; overflow: hidden; clip-path: inset(0); background: #2c2a26;">
-        <img ref="{{ heroImgRef }}" src="images/opt-hero.jpg" alt="민석과 주란의 웨딩 사진" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: min(460px, 100vw); height: 100lvh; object-fit: cover;">
+      <header data-screen-label="인트로" style="position: sticky; top: 0; z-index: 0; height: 100vh; max-height: 940px; overflow: hidden; background: #2c2a26;">
+        <img ref="{{ heroImgRef }}" src="images/opt-hero.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45;">
           <span style="position: absolute; top: 0; left: 28%; width: 9px; height: 9px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(201,137,63,0.55), rgba(168,90,50,0.5)); filter: blur(1.6px); animation: moodSnowDrift 13s linear 1s infinite;"></span>
@@ -111,6 +115,10 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <span style="position: absolute; top: 0; left: 15%; width: 10px; height: 10px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, rgba(190,120,60,0.55), rgba(150,84,46,0.5)); filter: blur(1px); animation: moodSnowLow 14s linear 9s infinite;"></span>
         </div>
         </sc-if>
+      </header>
+
+      <div style="position: relative; z-index: 1; background: #f7f6f2;">
+      <div style="position: relative; height: 0; overflow: visible; pointer-events: none;">
         <div ref="{{ heroTitleRef }}" style="position: absolute; left: 0; right: 0; bottom: 96px; text-align: center; color: #ffffff; text-shadow: 0 2px 22px rgba(0,0,0,0.35);">
           <p style="margin: 0; padding: 0 10px; white-space: nowrap; font-family: 'Belgiansignature', 'Belgian Signature', 'Alex Brush', cursive; font-size: min(24vw, 114px); line-height: 1; font-weight: 400;">Getting</p>
           <p style="margin: 0; padding: 0 10px; white-space: nowrap; font-family: 'Belgiansignature', 'Belgian Signature', 'Alex Brush', cursive; font-size: min(24vw, 114px); line-height: 1.1; font-weight: 400;">Married</p>
@@ -118,7 +126,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <div style="position: absolute; left: 0; right: 0; bottom: 38px; display: flex; justify-content: space-between; padding: 0 34px; color: #ffffff; font-family: 'Univers LT', 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; letter-spacing: 0.22em; text-shadow: 0 1px 10px rgba(0,0,0,0.4);">
           <span>24TH</span><span>OCT</span><span>2026</span>
         </div>
-      </header>
+      </div>
 
       <section data-screen-label="모시는 글" data-reveal="1" style="display: flex; flex-direction: column; align-items: center; gap: 26px; padding: 100px 28px 0; text-align: center;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
@@ -322,7 +330,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 
       <footer style="display: flex; flex-direction: column; gap: 0; padding: 110px 0 0;">
         <div style="overflow: hidden; border-top: 1px solid #e3ded4; border-bottom: 1px solid #e3ded4; padding: 14px 0; background: #f7f6f2;">
-          <div style="display: flex; white-space: nowrap; width: max-content; animation: marqX 22s linear infinite; font-family: 'Univers LT', 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; letter-spacing: 0.24em; color: #a8433c;">
+          <div ref="{{ marqRef }}" style="display: flex; white-space: nowrap; width: max-content; animation: marqX 22s linear infinite; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0.14em; font-size: 15px; font-weight: 600; letter-spacing: 0.24em; color: #a8433c;">
             <span style="padding-right: 40px;">JOIN US AS WE BECOME ONE&nbsp; · &nbsp;24 OCTOBER 2026&nbsp; · &nbsp;SATURDAY 5:00 PM&nbsp; ·&nbsp;</span>
             <span style="padding-right: 40px;">JOIN US AS WE BECOME ONE&nbsp; · &nbsp;24 OCTOBER 2026&nbsp; · &nbsp;SATURDAY 5:00 PM&nbsp; ·&nbsp;</span>
           </div>
@@ -338,6 +346,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           </div>
         </div>
       </footer>
+      </div>
 
     </div>
   </div>
@@ -519,6 +528,7 @@ class Component extends DCLogic {
   heroTitleRef = React.createRef();
   kakaoMapRef = React.createRef();
   galMainRef = React.createRef();
+  marqRef = React.createRef();
   lbImgRef = React.createRef();
   SB_BASE = 'https://uaujiwrbthdjbpkkzidd.supabase.co/rest/v1';
   SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdWppd3JidGhkamJwa2t6aWRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1Nzk3ODAsImV4cCI6MjEwMTE1NTc4MH0.l_Ech_8508APERa_pCrLaK-1R-jJFar87AfPSFoenoo';
@@ -574,13 +584,20 @@ class Component extends DCLogic {
       if (this._raf) return;
       this._raf = requestAnimationFrame(() => {
         this._raf = null;
-        // 사진은 CSS(fixed+clip)로 완전 고정 — JS 개입 없음
+        // 성능: 히어로가 완전히 지나가면 sticky 헤더(사진+낙엽 애니메이션) 렌더링 중단
+        const y2 = window.scrollY || 0;
+        const hd2 = this.heroImgRef.current && this.heroImgRef.current.closest('header');
+        if (hd2) {
+          const past = y2 > hd2.offsetHeight + 60;
+          if (past !== this._heroHidden) { this._heroHidden = past; hd2.style.visibility = past ? 'hidden' : 'visible'; }
+        }
       });
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
-    // 모바일 주소창 변화로 100svh가 변해 사진·제목이 커지는 현상 방지: 헤더 높이를 로드 시점 px로 고정
+    // 모바일 주소창 변화로 뷰포트 단위가 변해 사진·제목이 커지는 현상 방지: 헤더 높이를 로드 시점 px로 고정
     const hd = this.heroImgRef.current && this.heroImgRef.current.closest('header');
     if (hd) hd.style.height = Math.min(window.innerHeight, 940) + 'px';
+    // 제목 오버레이(높이 0 래퍼)가 헤더 바로 다음에 오므로 위치 보정 불필요
     // scroll reveal
     this._io = new IntersectionObserver(entries => {
       entries.forEach(en => {
@@ -668,6 +685,13 @@ class Component extends DCLogic {
     setTimeout(() => this.imgs.concat(this.thumbs, ['images/venue-map-live.png', 'images/venue-map.png', 'images/info-parking.png', 'images/info-atm.png']).forEach(u => { const im = new Image(); im.src = u; if (im.decode) im.decode().catch(() => {}); }), 700);
     this._esc = e => { if (e.key === 'Escape') this.setState({ lbOpen: false, contactOpen: false, rsvpOpen: false }); };
     window.addEventListener('keydown', this._esc);
+    // 성능: 흐르는 문구는 화면에 보일 때만 애니메이션
+    if (this.marqRef.current) {
+      this._marqIo = new IntersectionObserver(es => es.forEach(en => {
+        if (this.marqRef.current) this.marqRef.current.style.animationPlayState = en.isIntersecting ? 'running' : 'paused';
+      }));
+      this._marqIo.observe(this.marqRef.current);
+    }
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this._onScroll);
@@ -842,7 +866,7 @@ class Component extends DCLogic {
         else this.openApp('kakaomap://search?q=' + q, 'https://map.kakao.com/link/search/' + q, '카카오맵');
       },
       galItems,
-      galMainRef: this.galMainRef,
+      galMainRef: this.galMainRef, marqRef: this.marqRef,
       lbImgRef: this.lbImgRef,
       galOpenMain: () => this.setState({ lbOpen: true, lbIdx: s.galIdx }),
       lbShown: !!s.lbOpen,
