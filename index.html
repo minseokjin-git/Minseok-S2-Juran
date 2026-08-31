@@ -17,6 +17,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.cdnfonts.com/css/belgiansignature" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Cormorant+Garamond:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400;600;700&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<script>
+// 카카오톡 인앱 브라우저에서 열리면 기본 브라우저(사파리/삼성인터넷 등)로 이동
+(function () {
+  var ua = navigator.userAgent || '';
+  if (/KAKAOTALK/i.test(ua) && !/localhost|127\.0\.0\.1/.test(location.hostname)) {
+    location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
+  }
+})();
+</script>
 <style>
 @font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_20g.otf') format('opentype'); font-weight: 100 300; font-display: swap; }
 @font-face { font-family: 'Univers LT'; src: url('uploads/HGGGothicssi_Pro_40g.otf') format('opentype'); font-weight: 400 500; font-display: swap; }
@@ -38,6 +47,7 @@ input, textarea { outline: none; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes sheetDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
+@keyframes splashInfoUp { from { transform: translateY(calc(50vh - 130px)); } to { transform: translateY(0); } }
 @keyframes marqX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes moodSnow {
   0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg); opacity: 0; }
@@ -133,7 +143,11 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <span style="font-family: 'Univers LT', 'Cormorant Garamond', serif; font-size: 13.5px; letter-spacing: 0.36em; color: #b3ab9c;">INVITATION</span>
           <h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; font-weight: 600; color: #3b3833;">소중한 분들을 초대합니다</h2>
         </div>
-        <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: 400; line-height: 2.15; color: #4c4841; text-wrap: pretty;">서로 다른 길을 걸어온 두 사람이<br>이제 같은 길을 함께 걷고자 합니다.<br><br>저희 두 사람이 사랑과 믿음으로<br>한 가정을 이루는 날,<br>귀한 걸음 하시어 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.</p>
+        <div style="position: relative; padding: 0 30px;">
+          <span aria-hidden="true" style="position: absolute; left: -4px; top: -18px; font-family: 'Noto Serif KR', serif; font-size: 64px; line-height: 1; color: #ddd3c2;">“</span>
+          <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: 400; line-height: 2.15; color: #4c4841; text-wrap: pretty;">너와 함께한 날은 모두<br>내가 가장 좋아하는 날이야.<br>그래서 오늘은<br>내가 가장 좋아하는 날이야<br><br><span style="font-size: 13.5px; color: #9d968a;">- Winnie the Pooh &lt;곰돌이 푸&gt;</span></p>
+          <span aria-hidden="true" style="position: absolute; right: -4px; bottom: -6px; font-family: 'Noto Serif KR', serif; font-size: 64px; line-height: 1; color: #ddd3c2;">”</span>
+        </div>
         <span style="width: 30px; height: 1px; background: #ddd7cb;"></span>
         <div style="display: flex; align-items: stretch; justify-content: center; gap: 0; width: 100%; font-size: 15px; color: #3b3833;">
           <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="font-weight: 500;">진우영 · 이금옥</span><span style="color: #9d968a; font-size: 13.5px;">의 아들</span><span style="font-weight: 700; font-size: 16.5px; font-family: 'Noto Serif KR', serif;">진민석</span></div>
@@ -200,7 +214,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <sc-if value="{{ kakaoMapOff }}" hint-placeholder-val="{{ true }}">
           <img loading="lazy" decoding="async" src="images/venue-map-live.png" alt="서울대학교 이라운지 지도" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 4px; border: 1px solid #e3ded4;">
         </sc-if>
-        <img loading="lazy" decoding="async" src="images/venue-map.png" alt="서울대학교 이라운지 약도" style="width: 100%; height: auto; display: block; background: #ffffff; border-radius: 4px; border: 1px solid #e3ded4;">
+
         <div style="display: flex; flex-direction: column; gap: 10px;">
           <p style="margin: 6px 0 0; font-size: 15px; font-weight: 700; color: #3b3833;">내비게이션</p>
           <p style="margin: 0; font-size: 13.5px; font-weight: 300; color: #8b867c;">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
@@ -215,6 +229,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <p style="margin: 0; font-size: 14px; font-weight: 300; color: #55514a; line-height: 1.5;"><span style="color: #9d968a;">·</span> 서울대입구역 3번 출구 → <span style="font-weight: 500;">5511 · 5513</span></p>
           <p style="margin: 0; font-size: 14px; font-weight: 300; color: #55514a; line-height: 1.5;"><span style="color: #9d968a;">·</span> 낙성대역 4번 출구 → <span style="font-weight: 500;">관악02-1</span></p>
           <p style="margin: 0; font-size: 14px; font-weight: 300; color: #55514a; line-height: 1.5;"><span style="color: #9d968a;">·</span> 관악산역 1번 출구 → <span style="font-weight: 500;">5516</span> · 제2공학관 앞 하차</p>
+          <img loading="lazy" decoding="async" src="images/venue-map.png" alt="서울대학교 이라운지 약도" style="width: 100%; height: auto; display: block; background: #ffffff; border-radius: 4px; border: 1px solid #e3ded4; margin-top: 8px;">
         </div>
       </section>
 
@@ -279,15 +294,13 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           </div>
         </sc-if>
         <sc-if value="{{ gbFormHidden }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ gbOpenForm }}" style="align-self: flex-end; display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #3b3833; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">작성하기</button>
+          <button onClick="{{ gbOpenForm }}" style="align-self: center; display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #3b3833; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">작성하기</button>
         </sc-if>
       </section>
 
       <sc-if value="{{ rsvpShown }}" hint-placeholder-val="{{ true }}">
       <section data-screen-label="RSVP" data-reveal="1" style="display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 110px 28px 0; text-align: center;">
-        <p style="margin: 0; font-family: 'Belgiansignature', 'Belgian Signature', 'Alex Brush', cursive; font-size: 40px; color: #3b3833;">Wedding invitation</p>
-        <p style="margin: 0; font-size: 14px; letter-spacing: 0.04em; color: #7c766b;">Jin Min-seok &nbsp;/&nbsp; Kim Ju-ran</p>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
           <span style="font-family: 'Univers LT', 'Cormorant Garamond', serif; font-size: 13.5px; letter-spacing: 0.36em; color: #b3ab9c;">R.S.V.P.</span>
           <h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; font-weight: 600; color: #3b3833;">참석 의사 전달</h2>
           <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #7c766b; line-height: 1.8;">신랑, 신부에게 참석의사를<br>미리 전달할 수 있어요.</p>
@@ -368,10 +381,8 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <div style="position: absolute; inset: 0; background: linear-gradient(185deg, rgba(243,205,150,0.55) 0%, rgba(238,142,130,0.62) 55%, rgba(233,110,105,0.78) 100%);"></div>
         <button onClick="{{ splashSkip }}" style="position: absolute; top: 16px; right: 16px; display: flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; border-radius: 8px; border: none; background: rgba(80,70,60,0.42); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">SKIP →</button>
         <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center;">
-          <svg viewBox="0 0 24 24" width="44" height="44" fill="#ffe4e0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
-          <p ref="{{ splashTextRef }}" style="margin: 0; min-height: 1.6em; font-size: 17px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 10px rgba(150,60,50,0.35);"></p>
-        </div>
-        <div style="position: absolute; left: 0; right: 0; bottom: 48px; display: flex; flex-direction: column; gap: 5px; text-align: center; color: rgba(255,255,255,0.94); font-size: 14px; font-weight: 400; text-shadow: 0 1px 8px rgba(150,60,50,0.3);">
+          <p ref="{{ splashTextRef }}" style="margin: 0; min-height: 1.6em; font-size: 17.5px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 10px rgba(150,60,50,0.35);"></p>
+          <div style="display: flex; flex-direction: column; gap: 5px; text-align: center; color: rgba(255,255,255,0.94); font-size: 14px; font-weight: 400; text-shadow: 0 1px 8px rgba(150,60,50,0.3); animation: splashInfoUp 1.8s cubic-bezier(0.3, 0.7, 0.25, 1) 2.3s both;">
           <p style="margin: 0;">2026. 10. 24. 토요일, 오후 5시</p>
           <p style="margin: 0;">서울대학교 이라운지, 310동</p>
         </div>
@@ -498,7 +509,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
   <audio ref="{{ audioRef }}" src="uploads/bgm.mp3" loop="loop" preload="none" style="display: none;"></audio>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;bgm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;rsvpEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;snow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;연출&quot;},&quot;kakaoJsKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a00895829d743e264aba53834d2b3bfc&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;기능&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;bgm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;rsvpEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;기능&quot;},&quot;snow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;연출&quot;},&quot;kakaoJsKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;67e7355af9681e41e0c92e9a825baa29&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;기능&quot;}}">
 class Component extends DCLogic {
   state = { zoom: 1, playing: false, lbIdx: 0, lbOpen: false, toast: '', contactOpen: false, rsvpOpen: false, rsvpDone: false, rsvpSaved: null, rsvpAttend: 'yes', rsvpName: '', rsvpSide: 'groom', rsvpPhone: '', rsvpMeal: 'yes', rsvpMemo: '', rsvpErr: '', acctSide: 'groom', gbOpen: false, gbName: '', gbMsg: '', gbErr: '', gbList: null, sketchOpen: false, kakaoFail: false, galIdx: 0, acctFade: false, splash: true, splashClosing: false, promo: false, rsvpClosing: false, contactClosing: false };
   _closePromo() {
@@ -513,7 +524,8 @@ class Component extends DCLogic {
     setTimeout(() => {
       let hideToday = false;
       try { hideToday = localStorage.getItem('wd_promo_hide_v2') === new Date().toDateString(); } catch (e) {}
-      this.setState({ splash: false, promo: !this.state.rsvpDone && !hideToday && this.props.rsvpEnabled !== false });
+      // 참석의사를 이미 제출했어도 팝업은 표시 (오늘 하루 보지 않기만 존중)
+      this.setState({ splash: false, promo: !hideToday && this.props.rsvpEnabled !== false });
     }, 600);
   }
   acctRowRef = React.createRef();
@@ -532,8 +544,8 @@ class Component extends DCLogic {
   lbImgRef = React.createRef();
   SB_BASE = 'https://uaujiwrbthdjbpkkzidd.supabase.co/rest/v1';
   SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdWppd3JidGhkamJwa2t6aWRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1Nzk3ODAsImV4cCI6MjEwMTE1NTc4MH0.l_Ech_8508APERa_pCrLaK-1R-jJFar87AfPSFoenoo';
-  imgs = ['images/opt-cgal-1.jpg', 'images/opt-cgal-2.jpg', 'images/opt-cgal-3.jpg', 'images/opt-cgal-4.jpg', 'images/opt-cgal-5.jpg', 'images/opt-cgal-6.jpg', 'images/opt-wed-3.jpg', 'images/opt-wed-4.jpg', 'images/opt-wed-5.jpg', 'images/opt-wed-6.jpg'];
-  thumbs = ['images/thumb-cgal-1.jpg', 'images/thumb-cgal-2.jpg', 'images/thumb-cgal-3.jpg', 'images/thumb-cgal-4.jpg', 'images/thumb-cgal-5.jpg', 'images/thumb-cgal-6.jpg', 'images/thumb-wed-3.jpg', 'images/thumb-wed-4.jpg', 'images/thumb-wed-5.jpg', 'images/thumb-wed-6.jpg'];
+  imgs = ['images/opt-cgal-1.jpg', 'images/opt-cgal-2.jpg', 'images/opt-cgal-3.jpg', 'images/opt-cgal-4.jpg', 'images/opt-cgal-5.jpg', 'images/opt-cgal-6.jpg', 'images/opt-new-1.jpg', 'images/opt-new-2.jpg', 'images/opt-new-3.jpg', 'images/opt-new-4.jpg', 'images/opt-new-5.jpg', 'images/opt-wed-3.jpg', 'images/opt-wed-4.jpg', 'images/opt-wed-5.jpg', 'images/opt-wed-6.jpg'];
+  thumbs = ['images/thumb-cgal-1.jpg', 'images/thumb-cgal-2.jpg', 'images/thumb-cgal-3.jpg', 'images/thumb-cgal-4.jpg', 'images/thumb-cgal-5.jpg', 'images/thumb-cgal-6.jpg', 'images/thumb-new-1.jpg', 'images/thumb-new-2.jpg', 'images/thumb-new-3.jpg', 'images/thumb-new-4.jpg', 'images/thumb-new-5.jpg', 'images/thumb-wed-3.jpg', 'images/thumb-wed-4.jpg', 'images/thumb-wed-5.jpg', 'images/thumb-wed-6.jpg'];
   accts = {
     groom: [{ who: '신랑', name: '진민석', bank: '토스뱅크', num: '1000-4909-8236' }, { who: '아버지', name: '진우영', bank: '카카오뱅크', num: '3333-17-5147522' }, { who: '어머니', name: '이금옥', bank: '카카오뱅크', num: '3333-17-5153262' }],
     bride: [{ who: '신부', name: '김주란', bank: '우리은행', num: '1002-055-663148' }, { who: '아버지', name: '김태문', bank: '우리은행', num: '1260-830-2326' }, { who: '어머니', name: '원혜옥', bank: '신한은행', num: '110-144-606686' }]
@@ -568,14 +580,14 @@ class Component extends DCLogic {
     if (pre.decode) pre.decode().then(start).catch(start); else start();
   }
   componentDidMount() {
-    this._splashT = setTimeout(() => this.endSplash(), 3200);
-    const msg = '진민석, 김주란 결혼합니다.';
+    this._splashT = setTimeout(() => this.endSplash(), 5200);
+    const msg = '진민석 ♥ 김주란 결혼합니다.';
     let ci = 1;
     this._typeT = setInterval(() => {
       const el = this.splashTextRef.current;
       if (el) { el.textContent = msg.slice(0, ci); ci++; }
       if (ci > msg.length) clearInterval(this._typeT);
-    }, 65);
+    }, 130);
     this.initKakao();
     this.fetchGb();
     try { const r = JSON.parse(localStorage.getItem('wd_rsvp_mood')); if (r && r.name) this.setState({ rsvpDone: true, rsvpSaved: r, rsvpName: r.name, rsvpSide: r.side, rsvpAttend: r.attending, rsvpPhone: r.phone || '', rsvpMeal: r.meal || 'yes', rsvpMemo: r.memo || '' }); } catch (e) {}
@@ -677,7 +689,7 @@ class Component extends DCLogic {
       document.body.removeChild(meas);
       if (!w100) return;
       const ns = Math.min(100 * ((t.clientWidth * 1.01) / w100), 165);
-      t.querySelectorAll('p').forEach((p, i) => { p.style.fontSize = (i === 1 ? ns * 0.97 : ns) + 'px'; });
+      t.querySelectorAll('p').forEach((p, i) => { p.style.fontSize = (i === 1 ? ns * 0.93 : ns) + 'px'; });
     };
     setTimeout(fitTitle, 60); // 폰트 로드 전에도 즉시 맞춤 (스크롤 중 커지는 현상 방지)
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(fitTitle, 100));
@@ -843,7 +855,7 @@ class Component extends DCLogic {
       audioRef: this.audioRef,
       cdDays: String(Math.floor(dl / 86400000)), cdH: String(Math.floor(dl / 3600000) % 24).padStart(2, '0'), cdM: String(Math.floor(dl / 60000) % 60).padStart(2, '0'), cdS: String(Math.floor(dl / 1000) % 60).padStart(2, '0'),
       cdDRef: this.cdDRef, cdHRef: this.cdHRef, cdMRef: this.cdMRef, cdSRef: this.cdSRef,
-      ddayLine: days > 0 ? '민석, 주란의 결혼식이 ' + days + '일 남았습니다.' : days === 0 ? '오늘, 민석과 주란이 결혼합니다.' : '저희의 결혼식을 축복해 주셔서 감사합니다.',
+      ddayLine: days > 0 ? '민석 ♥ 주란의 결혼식이 ' + days + '일 남았습니다.' : days === 0 ? '오늘, 민석과 주란이 결혼합니다.' : '저희의 결혼식을 축복해 주셔서 감사합니다.',
       calCells: cells,
       contactShown: !!s.contactOpen,
       openContact: () => this.setState({ contactOpen: true }),
