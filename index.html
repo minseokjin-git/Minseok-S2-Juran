@@ -35,7 +35,7 @@
 @font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_40g.otf') format('opentype'); font-weight: 400 500; font-display: swap; }
 @font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_60g.otf') format('opentype'); font-weight: 600 700; font-display: swap; }
 @font-face { font-family: 'Yoon Gothic'; src: url('uploads/HGGGothicssi_Pro_80g.otf') format('opentype'); font-weight: 800 900; font-display: swap; }
-html, body { margin: 0; padding: 0; background: #e9e7e2; }
+html, body { margin: 0; padding: 0; background: #e9e7e2; overscroll-behavior-y: none; }
 body { font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; -webkit-text-size-adjust: 100%; word-break: keep-all; touch-action: manipulation; }
 img { -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none; pointer-events: none; }
 [data-map="1"] img { pointer-events: auto; }
@@ -116,7 +116,6 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45; contain: strict; transform: translateZ(0);">
           <span style="position: absolute; top: 0; left: 28%; width: 15px; height: 15px; background: url('images/leaf-d.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 85%; width: 16px; height: 16px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 18s linear 10s infinite;"></span>
         </div>
         </sc-if>
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,18,15,0.12) 0%, rgba(20,18,15,0) 42%, rgba(20,18,15,0.52) 100%);"></div>
@@ -125,10 +124,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
           <span style="position: absolute; top: 0; left: 8%; width: 20px; height: 20px; background: url('images/leaf-c.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnow 9s linear 0s infinite;"></span>
           <span style="position: absolute; top: 0; left: 37%; width: 22px; height: 22px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowMelt 12s linear 4.8s infinite;"></span>
           <span style="position: absolute; top: 0; left: 64%; width: 26px; height: 26px; background: url('images/leaf-h.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowNear 7s linear 2.5s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 88%; width: 17px; height: 17px; background: url('images/leaf-b.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnow 13s linear 7.7s infinite;"></span>
           <span style="position: absolute; top: 0; left: 22%; width: 18px; height: 18px; background: url('images/leaf-a.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 10.5s linear 6.2s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 78%; width: 21px; height: 21px; background: url('images/leaf-g.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowTop 8s linear 3.4s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 45%; width: 16px; height: 16px; background: url('images/leaf-e.png') center / contain no-repeat; opacity: 0; will-change: transform, opacity; animation: moodSnowLow 11s linear 5.5s infinite;"></span>
         </div>
         </sc-if>
       </header>
@@ -536,13 +532,19 @@ class Component extends DCLogic {
   _sheetMove = e => {
     if (this._dY == null || !this._dEl) return;
     const dy = e.touches[0].clientY - this._dY;
-    if (dy > 0) { this._dMoved = dy; this._dEl.style.transform = 'translateY(' + dy + 'px)'; }
+    if (dy > 4) {
+      this._dMoved = dy;
+      this._dEl.style.transform = 'translateY(' + dy + 'px)';
+      this._dEl.style.overflowY = 'hidden'; // 드래그 중 내부 스크롤·당겨서 새로고침 방지
+      if (e.cancelable) e.preventDefault();
+    }
   };
   _sheetEnd(closeFn) {
     return () => {
       const el = this._dEl; this._dY = null; this._dEl = null;
       if (!el) return;
       el.style.transition = 'transform 0.28s cubic-bezier(0.55, 0, 0.8, 0.4)';
+      el.style.overflowY = '';
       if (this._dMoved > 90) { el.style.transform = 'translateY(110%)'; setTimeout(closeFn, 230); }
       else el.style.transform = 'translateY(0)';
       this._dMoved = 0;
