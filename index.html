@@ -52,53 +52,54 @@ input, textarea { outline: none; }
 @keyframes acctInL { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes marqX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes moodSnow {
-  0% { transform: translate3d(4vw, -6vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
+  0% { transform: translate3d(4vw, -6vh, 0); opacity: 0; }
   8% { opacity: 0.8; }
-  25% { transform: translate3d(1vw, 22vh, 0) rotate(80deg) rotateY(150deg); }
-  50% { transform: translate3d(-4vw, 49vh, 0) rotate(150deg) rotateY(300deg); }
-  75% { transform: translate3d(-8vw, 76vh, 0) rotate(225deg) rotateY(460deg); }
+  50% { transform: translate3d(-4vw, 49vh, 0); }
   85% { opacity: 0.7; }
-  100% { transform: translate3d(-12vw, 104vh, 0) rotate(300deg) rotateY(620deg); opacity: 0; }
+  100% { transform: translate3d(-12vw, 104vh, 0); opacity: 0; }
 }
+@keyframes leafSpin {
+  from { transform: rotate(0deg) rotateY(0deg); }
+  to { transform: rotate(360deg) rotateY(720deg); }
+}
+@keyframes musicSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes moodSway { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
 @keyframes moodSnowMelt {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) scale(1); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) scale(1); opacity: 0; }
   10% { opacity: 0.85; }
-  28% { transform: translate3d(-1vw, 25vh, 0) rotate(100deg) rotateY(200deg) scale(0.85); }
   40% { opacity: 0.6; }
-  56% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) rotateY(390deg) scale(0.55); opacity: 0; }
-  100% { transform: translate3d(-8vw, 50vh, 0) rotate(200deg) rotateY(390deg) scale(0.55); opacity: 0; }
+  56% { transform: translate3d(-8vw, 50vh, 0) scale(0.55); opacity: 0; }
+  100% { transform: translate3d(-8vw, 50vh, 0) scale(0.55); opacity: 0; }
 }
 @keyframes moodSnowNear {
-  0% { transform: translate3d(8vw, -8vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
+  0% { transform: translate3d(8vw, -8vh, 0); opacity: 0; }
   6% { opacity: 0.95; }
-  30% { transform: translate3d(2vw, 27vh, 0) rotate(-100deg) rotateY(-200deg); }
-  60% { transform: translate3d(-7vw, 62vh, 0) rotate(-210deg) rotateY(-400deg); }
+  60% { transform: translate3d(-7vw, 62vh, 0); }
   85% { opacity: 0.85; }
-  100% { transform: translate3d(-18vw, 106vh, 0) rotate(-320deg) rotateY(-640deg); opacity: 0; }
+  100% { transform: translate3d(-18vw, 106vh, 0); opacity: 0; }
 }
 @keyframes moodSnowDrift {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0); opacity: 0; }
   8% { opacity: 0.8; }
-  25% { transform: translate3d(-5vw, 22vh, 0) rotate(90deg) rotateY(160deg); }
-  50% { transform: translate3d(2vw, 46vh, 0) rotate(170deg) rotateY(340deg); }
-  75% { transform: translate3d(-9vw, 74vh, 0) rotate(250deg) rotateY(520deg); }
+  25% { transform: translate3d(-5vw, 22vh, 0); }
+  50% { transform: translate3d(2vw, 46vh, 0); }
+  75% { transform: translate3d(-9vw, 74vh, 0); }
   94% { opacity: 0.65; }
-  100% { transform: translate3d(-14vw, 105vh, 0) rotate(330deg) rotateY(700deg); opacity: 0; }
+  100% { transform: translate3d(-14vw, 105vh, 0); opacity: 0; }
 }
 @keyframes moodSnowLow {
-  0% { transform: translate3d(8vw, 58vh, 0) rotate(0deg) rotateY(0deg); opacity: 0; }
+  0% { transform: translate3d(8vw, 58vh, 0); opacity: 0; }
   15% { opacity: 0.42; }
-  50% { transform: translate3d(-3vw, 78vh, 0) rotate(130deg) rotateY(220deg); opacity: 0.36; }
+  50% { transform: translate3d(-3vw, 78vh, 0); opacity: 0.36; }
   85% { opacity: 0.22; }
-  100% { transform: translate3d(-11vw, 102vh, 0) rotate(240deg) rotateY(420deg); opacity: 0; }
+  100% { transform: translate3d(-11vw, 102vh, 0); opacity: 0; }
 }
 @keyframes moodSnowTop {
-  0% { transform: translate3d(5vw, -4vh, 0) rotate(0deg) rotateY(0deg) scale(1); opacity: 0; }
+  0% { transform: translate3d(5vw, -4vh, 0) scale(1); opacity: 0; }
   12% { opacity: 0.85; }
-  30% { transform: translate3d(-2vw, 16vh, 0) rotate(110deg) rotateY(240deg) scale(0.85); opacity: 0.6; }
-  44% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) rotateY(380deg) scale(0.45); opacity: 0; }
-  100% { transform: translate3d(-5vw, 25vh, 0) rotate(170deg) rotateY(380deg) scale(0.45); opacity: 0; }
+  30% { transform: translate3d(-2vw, 16vh, 0) scale(0.85); opacity: 0.6; }
+  44% { transform: translate3d(-5vw, 25vh, 0) scale(0.45); opacity: 0; }
+  100% { transform: translate3d(-5vw, 25vh, 0) scale(0.45); opacity: 0; }
 }
 </style>
 <script>
@@ -115,16 +116,21 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <img ref="{{ heroImgRef }}" src="images/opt-hero.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45; contain: strict; transform: translateZ(0);">
-          <span style="position: absolute; top: 0; left: 28%; width: 13px; height: 13px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #d6a054, #b26a35); opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 28%; width: 13px; height: 13px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #d6a054, #b26a35); will-change: transform; animation: leafSpin 4.5s linear infinite;"></span></span>
+          <span style="position: absolute; top: 0; left: 70%; width: 11px; height: 11px; opacity: 0; will-change: transform, opacity; animation: moodSnow 15s linear 6.5s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c9893f, #a85a32); will-change: transform; animation: leafSpin 5.5s linear infinite reverse;"></span></span>
         </div>
         </sc-if>
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,18,15,0.12) 0%, rgba(20,18,15,0) 42%, rgba(20,18,15,0.52) 100%);"></div>
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
 <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; contain: strict; transform: translateZ(0);">
-          <span style="position: absolute; top: 0; left: 8%; width: 15px; height: 15px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c9893f, #a85a32); opacity: 0; will-change: transform, opacity; animation: moodSnow 9s linear 0s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 37%; width: 16px; height: 16px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c85b40, #a03a2a); opacity: 0; will-change: transform, opacity; animation: moodSnowMelt 12s linear 4.8s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 64%; width: 19px; height: 19px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #dba85c, #b26a35); opacity: 0; will-change: transform, opacity; animation: moodSnowNear 7s linear 2.5s infinite;"></span>
-          <span style="position: absolute; top: 0; left: 22%; width: 14px; height: 14px; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #cf9448, #aa6034); opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 10.5s linear 6.2s infinite;"></span>
+          <span style="position: absolute; top: 0; left: 8%; width: 15px; height: 15px; opacity: 0; will-change: transform, opacity; animation: moodSnow 9s linear 0s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c9893f, #a85a32); will-change: transform; animation: leafSpin 3.6s linear infinite;"></span></span>
+          <span style="position: absolute; top: 0; left: 37%; width: 16px; height: 16px; opacity: 0; will-change: transform, opacity; animation: moodSnowMelt 12s linear 4.8s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c85b40, #a03a2a); will-change: transform; animation: leafSpin 4.2s linear infinite reverse;"></span></span>
+          <span style="position: absolute; top: 0; left: 64%; width: 19px; height: 19px; opacity: 0; will-change: transform, opacity; animation: moodSnowNear 7s linear 2.5s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #dba85c, #b26a35); will-change: transform; animation: leafSpin 3s linear infinite;"></span></span>
+          <span style="position: absolute; top: 0; left: 22%; width: 14px; height: 14px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 10.5s linear 6.2s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #cf9448, #aa6034); will-change: transform; animation: leafSpin 5s linear infinite reverse;"></span></span>
+          <span style="position: absolute; top: 0; left: 88%; width: 15px; height: 15px; opacity: 0; will-change: transform, opacity; animation: moodSnow 13s linear 3.2s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #c85b40, #a03a2a); will-change: transform; animation: leafSpin 4.8s linear infinite;"></span></span>
+          <span style="position: absolute; top: 0; left: 50%; width: 12px; height: 12px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 14.5s linear 8.4s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #d6a054, #b0713a); will-change: transform; animation: leafSpin 5.4s linear infinite reverse;"></span></span>
+          <span style="position: absolute; top: 0; left: 78%; width: 17px; height: 17px; opacity: 0; will-change: transform, opacity; animation: moodSnowTop 8s linear 5.1s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #dba85c, #aa6034); will-change: transform; animation: leafSpin 3.4s linear infinite;"></span></span>
+          <span style="position: absolute; top: 0; left: 44%; width: 13px; height: 13px; opacity: 0; will-change: transform, opacity; animation: moodSnowLow 11s linear 2.8s infinite;"><span style="display: block; width: 100%; height: 100%; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #cf9448, #b0713a); will-change: transform; animation: leafSpin 5.8s linear infinite reverse;"></span></span>
         </div>
         </sc-if>
       </header>
@@ -360,7 +366,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 
   <div style="position: fixed; top: 14px; right: max(14px, calc(50vw - 216px)); display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 50;">
     <sc-if value="{{ bgmShown }}" hint-placeholder-val="{{ true }}">
-      <button onClick="{{ toggleMusic }}" aria-label="배경음악" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16);">
+      <button onClick="{{ toggleMusic }}" aria-label="배경음악" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16); animation: {{ musicSpinAnim }};">
         <sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#3b3833" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></sc-if>
         <sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b3ab9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="2" y1="2" x2="22" y2="22"></line></svg></sc-if>
       </button>
@@ -902,6 +908,7 @@ class Component extends DCLogic {
       snowShown: this.props.snow !== false && !s.splash,
       bgmShown: this.props.bgm !== false,
       playing: s.playing, musicOff: !s.playing,
+      musicSpinAnim: s.playing ? 'musicSpin 3s linear infinite' : 'none',
       toggleMusic: () => {
         const a = this.audioRef.current; if (!a) return;
         if (a.paused) { this._userPaused = false; a.volume = 0.5; a.play().then(() => this.setState({ playing: true })).catch(() => {}); }
