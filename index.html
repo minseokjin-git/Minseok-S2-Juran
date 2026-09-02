@@ -5,8 +5,11 @@
 <meta property="og:title" content="[속보] 진민석 ♥ 김주란 결혼">
 <meta property="og:description" content="2026년 10월 24일 토요일 오후 5시 · 서울대학교 이라운지">
 <meta property="og:image" content="https://minseokjin-git.github.io/Minseok-S2-Juran/images/opt-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://minseokjin-git.github.io/Minseok-S2-Juran/">
 <meta property="og:type" content="website">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -371,6 +374,9 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
         <sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b3ab9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="2" y1="2" x2="22" y2="22"></line></svg></sc-if>
       </button>
     </sc-if>
+    <button onClick="{{ shareKakao }}" aria-label="카카오톡으로 공유" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16);">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="#3b3833"><path d="M12 3C6.48 3 2 6.54 2 10.9c0 2.8 1.86 5.26 4.66 6.66l-.95 3.5c-.08.3.26.54.52.37l4.2-2.77c.51.06 1.03.1 1.57.1 5.52 0 10-3.54 10-7.86S17.52 3 12 3z"></path></svg>
+    </button>
 
   </div>
 
@@ -772,21 +778,24 @@ class Component extends DCLogic {
   }
   kakaoOn() { return !!(this.props.kakaoJsKey || '').trim() && !this.state.kakaoFail; }
   kakaoShare() {
-    const key = (this.props.kakaoJsKey || '').trim();
+    const key = (this.props.kakaoJsKey || '').trim() || '0a02d538087738a7b39d37f8c270d832';
     const K = window.Kakao;
-    if (!key || !K || !K.Share) { this.showToast('카카오 공유를 사용할 수 없습니다'); return; }
+    if (!key || !K) { this.showToast('카카오 공유를 사용할 수 없습니다'); return; }
     try { if (!K.isInitialized()) K.init(key); } catch (e) {}
+    if (!K.Share) { this.showToast('카카오 공유를 사용할 수 없습니다'); return; }
     const url = 'https://minseokjin-git.github.io/Minseok-S2-Juran/';
     const content = {
       title: '[속보] 진민석 ♥ 김주란 결혼',
       description: '2026년 10월 24일 토요일 오후 5시 · 서울대학교 이라운지',
-      imageUrl: url + 'images/opt-hero.jpg',
+      imageUrl: url + 'images/og-tall.jpg',
+      imageWidth: 800, imageHeight: 1200,
       link: { mobileWebUrl: url, webUrl: url }
     };
+    const mapUrl = 'https://map.kakao.com/link/search/' + encodeURIComponent('서울대학교 엔지니어하우스');
     const evId = (this.props.kakaoCalEventId || '').trim();
     try {
       if (evId) K.Share.sendDefault({ objectType: 'calendar', idType: 'event', id: evId, content, buttons: [{ title: '청첩장 보기', link: content.link }] });
-      else K.Share.sendDefault({ objectType: 'feed', content, buttons: [{ title: '청첩장 보기', link: content.link }] });
+      else K.Share.sendDefault({ objectType: 'feed', content, buttons: [{ title: '청첩장 보기', link: content.link }, { title: '위치 보기', link: { mobileWebUrl: mapUrl, webUrl: mapUrl } }] });
     } catch (e) { this.showToast('공유 실행 중 문제가 발생했습니다'); }
   }
   initKakao() {
