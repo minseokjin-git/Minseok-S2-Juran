@@ -132,7 +132,7 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
 
       <div style="position: relative; z-index: 1; background: #f7f6f2;">
       <div style="position: relative; height: 0; overflow: visible; pointer-events: none;">
-        <div ref="{{ heroTitleRef }}" style="position: absolute; left: 0; right: 0; bottom: 96px; text-align: center; color: #ffffff; text-shadow: 0 2px 22px rgba(0,0,0,0.35);">
+        <div ref="{{ heroTitleRef }}" style="position: absolute; left: 0; right: 0; bottom: 220px; text-align: center; color: #ffffff; text-shadow: 0 2px 22px rgba(0,0,0,0.35);">
           <p style="margin: 0; padding: 0 10px; white-space: nowrap; font-family: 'Belgiansignature', 'Belgian Signature', 'Alex Brush', cursive; font-size: min(24vw, 114px); line-height: 1; font-weight: 400;">Getting</p>
           <p style="margin: 0; padding: 0 10px; white-space: nowrap; font-family: 'Belgiansignature', 'Belgian Signature', 'Alex Brush', cursive; font-size: min(24vw, 114px); line-height: 1.1; font-weight: 400;">Married</p>
         </div>
@@ -148,7 +148,7 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
         </div>
         <div style="position: relative; padding: 0 30px;">
           <span aria-hidden="true" style="position: absolute; left: -4px; top: -18px; font-family: 'Noto Serif KR', serif; font-size: 64px; line-height: 1; color: #ddd3c2;">“</span>
-          <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: 400; line-height: 2.15; color: #4c4841; text-wrap: pretty;">너와 함께한 날은 모두<br>내가 가장 좋아하는 날이야.<br>그래서 오늘은<br>내가 가장 좋아하는 날이야<br><br><span style="font-size: 13.5px; color: #9d968a;">- Winnie the Pooh &lt;곰돌이 푸&gt;</span></p>
+          <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 16px; font-weight: 400; line-height: 2.15; color: #4c4841; text-wrap: pretty;">너와 함께한 날은 모두<br>내가 가장 좋아하는 날이야.<br>그래서 오늘은<br>내가 가장 좋아하는 날이야<br><br><span style="font-size: 13.5px; color: #9d968a;">- Winnie the Pooh &lt;곰돌이 푸&gt; -</span></p>
           <span aria-hidden="true" style="position: absolute; right: -4px; bottom: -6px; font-family: 'Noto Serif KR', serif; font-size: 64px; line-height: 1; color: #ddd3c2;">”</span>
         </div>
         <span style="width: 30px; height: 1px; background: #ddd7cb;"></span>
@@ -636,9 +636,6 @@ class Component extends DCLogic {
         const dx = r.tx - r.x, dy = r.ty - r.y, d = Math.sqrt(dx * dx + dy * dy);
         if (d < r.sp * 2) { rockets.splice(ri, 1); burst(r.tx, r.ty, r.depth); continue; }
         r.x += dx / d * r.sp; r.y += dy / d * r.sp;
-        // 불꽃 스파크 꼬리
-        parts.push({ x: r.x, y: r.y, vx: (Math.random() - 0.5) * 0.5 * dpr, vy: (0.2 + Math.random() * 0.5) * dpr,
-          life: 0.4, decay: 0.05, col: '#ffd98a', gm: 0.6, tw: true, dp: 1 });
         // 밝은 헤드 + 꼬리 선
         ctx.globalAlpha = 0.55; ctx.strokeStyle = '#ffe9c0'; ctx.lineWidth = 1.4 * dpr;
         ctx.beginPath(); ctx.moveTo(r.x - dx / d * r.sp * 9, r.y - dy / d * r.sp * 9); ctx.lineTo(r.x, r.y); ctx.stroke();
