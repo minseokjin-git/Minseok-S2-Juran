@@ -23,10 +23,6 @@
 <script>
 // 카카오톡 인앱 브라우저에서 열리면 기본 브라우저(사파리/삼성인터넷 등)로 이동
 (function () {
-  var ua = navigator.userAgent || '';
-  if (/KAKAOTALK/i.test(ua) && !/localhost|127\.0\.0\.1/.test(location.hostname)) {
-    location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
-  }
 })();
 </script>
 <style>
