@@ -110,6 +110,7 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
 </script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"></script>
 </helmet>
+<div id="mood-precover" style="position: fixed; inset: 0; z-index: 500; background: #e9e7e2;"></div>
 <div style="min-height: 100vh; background: #e9e7e2;">
   <div style="max-width: 460px; margin: 0 auto; background: #f7f6f2; box-shadow: 0 0 40px rgba(50,45,35,0.16); overflow: clip;">
     <div style="zoom: {{ zoom }};">
@@ -596,8 +597,8 @@ class Component extends DCLogic {
   lbImgRef = React.createRef();
   SB_BASE = 'https://uaujiwrbthdjbpkkzidd.supabase.co/rest/v1';
   SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdWppd3JidGhkamJwa2t6aWRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1Nzk3ODAsImV4cCI6MjEwMTE1NTc4MH0.l_Ech_8508APERa_pCrLaK-1R-jJFar87AfPSFoenoo';
-  imgs = ['images/opt-cgal-1.jpg', 'images/opt-cgal-2.jpg', 'images/opt-cgal-3.jpg', 'images/opt-cgal-4.jpg', 'images/opt-cgal-5.jpg', 'images/opt-cgal-6.jpg', 'images/opt-new-1.jpg', 'images/opt-new-2.jpg', 'images/opt-new-3.jpg', 'images/opt-new-4.jpg', 'images/opt-new-5.jpg', 'images/opt-wed-3.jpg', 'images/opt-wed-4.jpg', 'images/opt-wed-5.jpg', 'images/opt-wed-6.jpg'];
-  thumbs = ['images/thumb-cgal-1.jpg', 'images/thumb-cgal-2.jpg', 'images/thumb-cgal-3.jpg', 'images/thumb-cgal-4.jpg', 'images/thumb-cgal-5.jpg', 'images/thumb-cgal-6.jpg', 'images/thumb-new-1.jpg', 'images/thumb-new-2.jpg', 'images/thumb-new-3.jpg', 'images/thumb-new-4.jpg', 'images/thumb-new-5.jpg', 'images/thumb-wed-3.jpg', 'images/thumb-wed-4.jpg', 'images/thumb-wed-5.jpg', 'images/thumb-wed-6.jpg'];
+  imgs = ['images/opt-cgal-1.jpg', 'images/opt-cgal-3.jpg', 'images/opt-cgal-4.jpg', 'images/opt-cgal-5.jpg', 'images/opt-cgal-6.jpg', 'images/opt-new-1.jpg', 'images/opt-new-2.jpg', 'images/opt-new-3.jpg', 'images/opt-new-4.jpg', 'images/opt-new-5.jpg', 'images/opt-wed-3.jpg', 'images/opt-wed-4.jpg', 'images/opt-wed-5.jpg', 'images/opt-wed-6.jpg'];
+  thumbs = ['images/thumb-cgal-1.jpg', 'images/thumb-cgal-3.jpg', 'images/thumb-cgal-4.jpg', 'images/thumb-cgal-5.jpg', 'images/thumb-cgal-6.jpg', 'images/thumb-new-1.jpg', 'images/thumb-new-2.jpg', 'images/thumb-new-3.jpg', 'images/thumb-new-4.jpg', 'images/thumb-new-5.jpg', 'images/thumb-wed-3.jpg', 'images/thumb-wed-4.jpg', 'images/thumb-wed-5.jpg', 'images/thumb-wed-6.jpg'];
   accts = {
     groom: [{ who: '신랑', name: '진민석', bank: '토스뱅크', num: '1000-4909-8236' }, { who: '아버지', name: '진우영', bank: '카카오뱅크', num: '3333-17-5147522' }, { who: '어머니', name: '이금옥', bank: '카카오뱅크', num: '3333-17-5153262' }],
     bride: [{ who: '신부', name: '김주란', bank: '우리은행', num: '1002-055-663148' }, { who: '아버지', name: '김태문', bank: '우리은행', num: '1260-830-2326' }, { who: '어머니', name: '원혜옥', bank: '신한은행', num: '110-144-606686' }]
@@ -632,6 +633,8 @@ class Component extends DCLogic {
     if (pre.decode) pre.decode().then(start).catch(start); else start();
   }
   componentDidMount() {
+    const pc = document.getElementById('mood-precover');
+    if (pc) requestAnimationFrame(() => requestAnimationFrame(() => pc.remove()));
     this._splashT = setTimeout(() => this.endSplash(), 5200);
     const msg = '진민석 ♥ 김주란 결혼합니다.';
     let ci = 1;
