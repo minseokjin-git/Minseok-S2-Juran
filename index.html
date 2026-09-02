@@ -44,7 +44,8 @@ input, textarea { outline: none; }
 [data-hscroll] { scrollbar-width: none; -ms-overflow-style: none; }
 [data-hscroll]::-webkit-scrollbar { display: none; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes hero-run { 0% { opacity: 0; } 4% { opacity: 1; } 25% { opacity: 1; } 32% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hero-run-mid { 0% { opacity: 0; } 4% { opacity: 1; } 42% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes hero-run-last { 0% { opacity: 0; } 4% { opacity: 1; } 25% { opacity: 1; } 29% { opacity: 0; } 100% { opacity: 0; } }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes sheetDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
 @keyframes splashInfoUp { from { transform: translateY(calc(50vh - 130px)); } to { transform: translateY(0); } }
@@ -118,28 +119,14 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
     <div style="zoom: {{ zoom }};">
 
       <header data-screen-label="인트로" style="position: sticky; top: 0; z-index: 0; height: 100vh; max-height: 940px; overflow: hidden; background: #2c2a26;">
-        <img ref="{{ heroImgRef }}" src="images/hero-run-1.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite;">
-        <img src="images/hero-run-2.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 1.4s;">
-        <img src="images/hero-run-3.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 2.8s;">
-        <img src="images/hero-run-4.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 4.2s;">
-        <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
-        <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45; contain: strict; transform: translateZ(0);">
-          <span style="position: absolute; top: 0; left: 28%; width: 17px; height: 17px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-d.png') center / contain no-repeat; will-change: transform; animation: leafSpin 4.5s linear infinite;"></span></span>
-          <span style="position: absolute; top: 0; left: 70%; width: 15px; height: 15px; opacity: 0; will-change: transform, opacity; animation: moodSnow 15s linear 6.5s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-c.png') center / contain no-repeat; will-change: transform; animation: leafSpin 5.5s linear infinite reverse;"></span></span>
-        </div>
-        </sc-if>
+        <img ref="{{ heroImgRef }}" src="images/hero-run-1.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{ heroBaseOp }}; animation: {{ heroRunA1 }};">
+        <img src="images/hero-run-2.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: {{ heroRunA2 }};">
+        <img src="images/hero-run-3.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: {{ heroRunA3 }};">
+        <img src="images/hero-run-4.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: {{ heroRunA4 }};">
+
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,18,15,0.12) 0%, rgba(20,18,15,0) 42%, rgba(20,18,15,0.52) 100%);"></div>
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
-<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; contain: strict; transform: translateZ(0);">
-          <span style="position: absolute; top: 0; left: 8%; width: 20px; height: 20px; opacity: 0; will-change: transform, opacity; animation: moodSnow 9s linear 0s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-c.png') center / contain no-repeat; will-change: transform; animation: leafSpin 3.6s linear infinite;"></span></span>
-          <span style="position: absolute; top: 0; left: 37%; width: 21px; height: 21px; opacity: 0; will-change: transform, opacity; animation: moodSnowMelt 12s linear 4.8s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-g.png') center / contain no-repeat; will-change: transform; animation: leafSpin 4.2s linear infinite reverse;"></span></span>
-          <span style="position: absolute; top: 0; left: 64%; width: 25px; height: 25px; opacity: 0; will-change: transform, opacity; animation: moodSnowNear 7s linear 2.5s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-h.png') center / contain no-repeat; will-change: transform; animation: leafSpin 3s linear infinite;"></span></span>
-          <span style="position: absolute; top: 0; left: 22%; width: 18px; height: 18px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 10.5s linear 6.2s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-a.png') center / contain no-repeat; will-change: transform; animation: leafSpin 5s linear infinite reverse;"></span></span>
-          <span style="position: absolute; top: 0; left: 88%; width: 19px; height: 19px; opacity: 0; will-change: transform, opacity; animation: moodSnow 13s linear 3.2s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-b.png') center / contain no-repeat; will-change: transform; animation: leafSpin 4.8s linear infinite;"></span></span>
-          <span style="position: absolute; top: 0; left: 50%; width: 16px; height: 16px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 14.5s linear 8.4s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-f.png') center / contain no-repeat; will-change: transform; animation: leafSpin 5.4s linear infinite reverse;"></span></span>
-          <span style="position: absolute; top: 0; left: 78%; width: 21px; height: 21px; opacity: 0; will-change: transform, opacity; animation: moodSnowTop 8s linear 5.1s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-g.png') center / contain no-repeat; will-change: transform; animation: leafSpin 3.4s linear infinite;"></span></span>
-          <span style="position: absolute; top: 0; left: 44%; width: 17px; height: 17px; opacity: 0; will-change: transform, opacity; animation: moodSnowLow 11s linear 2.8s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-e.png') center / contain no-repeat; will-change: transform; animation: leafSpin 5.8s linear infinite reverse;"></span></span>
-        </div>
+          <canvas ref="{{ fwCanvasRef }}" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
         </sc-if>
       </header>
 
@@ -595,6 +582,96 @@ class Component extends DCLogic {
   audioRef = React.createRef();
   cdDRef = React.createRef(); cdHRef = React.createRef(); cdMRef = React.createRef(); cdSRef = React.createRef();
   heroImgRef = React.createRef();
+  fwCanvasRef = React.createRef();
+  initFireworks() {
+    const cv = this.fwCanvasRef && this.fwCanvasRef.current;
+    if (!cv || this._fwOn) return;
+    this._fwOn = true;
+    const ctx = cv.getContext('2d');
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const resize = () => { cv.width = (cv.clientWidth || 1) * dpr; cv.height = (cv.clientHeight || 1) * dpr; };
+    resize(); window.addEventListener('resize', resize);
+    let parts = [], rockets = [], lastBurst = 0;
+    const colors = ['#ffe8c7', '#ffd6a8', '#f7c6c2', '#eec3e6', '#cdd8ff', '#fff6e8'];
+    const launch = () => {
+      const W = cv.width, H = cv.height;
+      const depth = 0.55 + Math.random() * 0.55; // 원근: 작을수록 멀리
+      const sx = (0.18 + Math.random() * 0.64) * W, sy = 0.80 * H; // 피사체 뒤 지면에서 발사
+      const tx = sx + (Math.random() - 0.5) * 0.3 * W, ty = (0.07 + Math.random() * 0.33) * H;
+      rockets.push({ x: sx, y: sy, tx, ty, depth,
+        col: colors[(Math.random() * colors.length) | 0], sp: (1.7 + Math.random() * 0.5) * dpr });
+    };
+    const burst = (bx, by, depth) => {
+      const x = bx, y = by;
+      const type = ['peony', 'ring', 'willow', 'twinkle', 'heart', 'multi'][(Math.random() * 6) | 0];
+      const col = colors[(Math.random() * colors.length) | 0];
+      const sp0 = (1.1 + Math.random() * 0.6) * dpr * depth;
+      if (type === 'heart') {
+        const n = 44, s = sp0 * 0.16;
+        for (let i = 0; i < n; i++) {
+          const t = (i / n) * Math.PI * 2;
+          const hx = 16 * Math.pow(Math.sin(t), 3), hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+          parts.push({ x, y, vx: hx * s, vy: hy * s, life: 1, decay: 0.008, col: '#ffb3c8', gm: 0.5, tw: false, dp: depth });
+        }
+        return;
+      }
+      const n = type === 'twinkle' ? 50 : 36 + (Math.random() * 20 | 0);
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2 + Math.random() * 0.25;
+        let sp = sp0 * (0.8 + Math.random() * 1.6), decay = 0.007 + Math.random() * 0.009, gm = 1, tw = false, c = col;
+        if (type === 'ring') { sp = sp0 * 1.5 * (0.97 + Math.random() * 0.06); decay = 0.009; }
+        if (type === 'willow') { sp = sp0 * (0.5 + Math.random() * 0.9); decay = 0.004 + Math.random() * 0.003; gm = 1.2; c = i % 2 ? '#ffd98a' : '#fff3d6'; }
+        if (type === 'twinkle') { tw = true; decay = 0.006 + Math.random() * 0.01; }
+        if (type === 'multi') { c = colors[(Math.random() * colors.length) | 0]; }
+        parts.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 1, decay, col: c, gm, tw, dp: depth });
+      }
+    };
+    const tick = (t) => {
+      if (!cv.isConnected) { this._fwOn = false; window.removeEventListener('resize', resize); return; }
+      this._fwRaf = requestAnimationFrame(tick);
+      if (document.hidden || cv.offsetParent === null) return;
+      if (t - lastBurst > 2800 + Math.random() * 1800) { lastBurst = t; launch(); if (Math.random() < 0.15) setTimeout(launch, 700); }
+      for (let ri = rockets.length - 1; ri >= 0; ri--) {
+        const r = rockets[ri];
+        const dx = r.tx - r.x, dy = r.ty - r.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < r.sp * 2) { rockets.splice(ri, 1); burst(r.tx, r.ty, r.depth); continue; }
+        r.x += dx / d * r.sp; r.y += dy / d * r.sp;
+        // 불꽃 스파크 꼬리
+        parts.push({ x: r.x, y: r.y, vx: (Math.random() - 0.5) * 0.5 * dpr, vy: (0.2 + Math.random() * 0.5) * dpr,
+          life: 0.4, decay: 0.05, col: '#ffd98a', gm: 0.6, tw: true, dp: 1 });
+        // 밝은 헤드 + 꼬리 선
+        ctx.globalAlpha = 0.55; ctx.strokeStyle = '#ffe9c0'; ctx.lineWidth = 1.4 * dpr;
+        ctx.beginPath(); ctx.moveTo(r.x - dx / d * r.sp * 9, r.y - dy / d * r.sp * 9); ctx.lineTo(r.x, r.y); ctx.stroke();
+        ctx.globalAlpha = 0.95; ctx.shadowColor = '#fff6e8'; ctx.shadowBlur = 10 * dpr; ctx.fillStyle = '#fff6e8';
+        ctx.beginPath(); ctx.arc(r.x, r.y, 2.1 * dpr, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.lineCap = 'round';
+      parts = parts.filter(p => p.life > 0);
+      if (parts.length > 700) parts.splice(0, parts.length - 700);
+      for (const p of parts) {
+        const px = p.x, py = p.y;
+        p.vx *= 0.988; p.vy = p.vy * 0.988 + 0.012 * dpr * (p.gm || 1);
+        p.x += p.vx; p.y += p.vy; p.life -= p.decay * 0.26;
+        let al = Math.max(0, p.life) * (p.life > 0.3 ? 1 : p.life / 0.3) * 0.75 * (0.55 + 0.45 * (p.dp || 1));
+        if (p.tw) al *= 0.45 + 0.55 * Math.random();
+        // soft trail
+        ctx.globalAlpha = al * 0.45;
+        ctx.strokeStyle = p.col; ctx.lineWidth = 1.1 * dpr;
+        ctx.beginPath(); ctx.moveTo(px - p.vx * 6, py - p.vy * 6); ctx.lineTo(p.x, p.y); ctx.stroke();
+        // glowing core
+        const r = (p.tw ? 1.6 : 1.3) * dpr * (p.dp || 1);
+        ctx.globalAlpha = al;
+        ctx.shadowColor = p.col; ctx.shadowBlur = 6 * dpr;
+        ctx.fillStyle = p.col;
+        ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalAlpha = 1;
+    };
+    this._fwRaf = requestAnimationFrame(tick);
+  }
   heroTitleRef = React.createRef();
   kakaoMapRef = React.createRef();
   galMainRef = React.createRef();
@@ -783,6 +860,7 @@ class Component extends DCLogic {
     clearInterval(this._cdTimer);
   }
   componentDidUpdate(pp) {
+    this.initFireworks();
     if (pp && pp.kakaoJsKey !== this.props.kakaoJsKey) { this._kmTry = 0; this.setState({ kakaoFail: false }, () => this.initKakao()); }
     const gm = this.galMainRef.current;
     const want = this.imgs[this.state.galIdx];
@@ -930,7 +1008,7 @@ class Component extends DCLogic {
     return {
       zoom: s.zoom,
       zoomCycle: () => this.setState({ zoom: s.zoom > 1 ? 1 : 1.25 }),
-      heroImgRef: this.heroImgRef, heroTitleRef: this.heroTitleRef,
+      heroImgRef: this.heroImgRef, heroTitleRef: this.heroTitleRef, fwCanvasRef: this.fwCanvasRef,
       snowShown: this.props.snow !== false && !s.splash,
       bgmShown: this.props.bgm !== false,
       playing: s.playing, musicOff: !s.playing,
@@ -1052,6 +1130,11 @@ class Component extends DCLogic {
       acctCards: acct.map(a => ({ who: a.who, name: a.name, bank: a.bank, num: a.num, whoSt: { color: s.acctSide === 'groom' ? '#7f92b3' : '#c08b84', fontWeight: 500 }, copy: () => this.copy(a.num, (s.acctSide === 'groom' ? '신랑측 ' : '신부측 ') + a.who) })),
       toastShown: !!s.toast, toastMsg: s.toast,
       splashShown: !!s.splash,
+      heroBaseOp: 1,
+      heroRunA1: 'none',
+      heroRunA2: s.splash ? 'none' : 'hero-run-mid 8s linear infinite 2s',
+      heroRunA3: s.splash ? 'none' : 'hero-run-mid 8s linear infinite 4s',
+      heroRunA4: s.splash ? 'none' : 'hero-run-last 8s linear infinite 6s',
       splashAnim: s.splashClosing ? 'fadeOut 0.6s ease both' : 'none',
       splashSkip: () => this.endSplash(),
       splashTextRef: this.splashTextRef,
