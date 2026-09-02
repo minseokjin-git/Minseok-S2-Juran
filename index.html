@@ -44,6 +44,7 @@ input, textarea { outline: none; }
 [data-hscroll] { scrollbar-width: none; -ms-overflow-style: none; }
 [data-hscroll]::-webkit-scrollbar { display: none; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-run { 0% { opacity: 0; } 4% { opacity: 1; } 25% { opacity: 1; } 32% { opacity: 0; } 100% { opacity: 0; } }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes sheetDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
 @keyframes splashInfoUp { from { transform: translateY(calc(50vh - 130px)); } to { transform: translateY(0); } }
@@ -108,6 +109,7 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 <script>
 if (/[?&]view=location/.test(location.search)) location.replace('https://map.kakao.com/link/map/' + encodeURIComponent('서울대학교 엔지니어하우스') + ',37.4498,126.9535');
 </script>
+<link rel="preload" as="image" href="images/splash-blur.jpg">
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"></script>
 </helmet>
 <div id="mood-precover" style="position: fixed; inset: 0; z-index: 500; background: #e9e7e2;"></div>
@@ -116,7 +118,10 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
     <div style="zoom: {{ zoom }};">
 
       <header data-screen-label="인트로" style="position: sticky; top: 0; z-index: 0; height: 100vh; max-height: 940px; overflow: hidden; background: #2c2a26;">
-        <img ref="{{ heroImgRef }}" src="images/opt-hero.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <img ref="{{ heroImgRef }}" src="images/hero-run-1.jpg" alt="민석과 주란의 웨딩 사진" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite;">
+        <img src="images/hero-run-2.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 1.4s;">
+        <img src="images/hero-run-3.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 2.8s;">
+        <img src="images/hero-run-4.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: hero-run 5.6s linear infinite; animation-delay: 4.2s;">
         <sc-if value="{{ snowShown }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.45; contain: strict; transform: translateZ(0);">
           <span style="position: absolute; top: 0; left: 28%; width: 17px; height: 17px; opacity: 0; will-change: transform, opacity; animation: moodSnowDrift 13s linear 1s infinite;"><span style="display: block; width: 100%; height: 100%; background: url('images/leaf-d.png') center / contain no-repeat; will-change: transform; animation: leafSpin 4.5s linear infinite;"></span></span>
@@ -1047,7 +1052,7 @@ class Component extends DCLogic {
       acctCards: acct.map(a => ({ who: a.who, name: a.name, bank: a.bank, num: a.num, whoSt: { color: s.acctSide === 'groom' ? '#7f92b3' : '#c08b84', fontWeight: 500 }, copy: () => this.copy(a.num, (s.acctSide === 'groom' ? '신랑측 ' : '신부측 ') + a.who) })),
       toastShown: !!s.toast, toastMsg: s.toast,
       splashShown: !!s.splash,
-      splashAnim: s.splashClosing ? 'fadeOut 0.6s ease both' : 'fadeIn 0.7s ease',
+      splashAnim: s.splashClosing ? 'fadeOut 0.6s ease both' : 'none',
       splashSkip: () => this.endSplash(),
       splashTextRef: this.splashTextRef,
       promoShown: !!s.promo,
