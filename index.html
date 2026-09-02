@@ -4,7 +4,7 @@
 <title>[속보] 진민석 ♥ 김주란 결혼</title>
 <meta property="og:title" content="[속보] 진민석 ♥ 김주란 결혼">
 <meta property="og:description" content="2026년 10월 24일 토요일 오후 5시 · 서울대학교 이라운지">
-<meta property="og:image" content="https://minseokjin-git.github.io/Minseok-S2-Juran/images/opt-hero.jpg">
+<meta property="og:image" content="https://minseokjin-git.github.io/Minseok-S2-Juran/images/og-mood.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://minseokjin-git.github.io/Minseok-S2-Juran/">
@@ -108,6 +108,9 @@ input, textarea { outline: none; }
 <script>
 document.addEventListener('gesturestart', function (e) { e.preventDefault(); }, { passive: false });
 document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t || (t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA')) e.preventDefault(); });
+</script>
+<script>
+if (/[?&]view=location/.test(location.search)) location.replace('https://map.kakao.com/link/map/' + encodeURIComponent('서울대학교 엔지니어하우스') + ',37.4498,126.9535');
 </script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"></script>
 </helmet>
@@ -369,13 +372,17 @@ document.addEventListener('contextmenu', function (e) { var t = e.target; if (!t
 
   <div style="position: fixed; top: 14px; right: max(14px, calc(50vw - 216px)); display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 50;">
     <sc-if value="{{ bgmShown }}" hint-placeholder-val="{{ true }}">
-      <button onClick="{{ toggleMusic }}" aria-label="배경음악" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16); animation: {{ musicSpinAnim }};">
-        <sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#3b3833" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></sc-if>
-        <sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b3ab9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="2" y1="2" x2="22" y2="22"></line></svg></sc-if>
+      <button onClick="{{ toggleMusic }}" aria-label="배경음악" style="display: flex; align-items: center; min-height: 42px; padding: 0 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16);">
+        <span style="display: flex; align-items: center; justify-content: center; animation: {{ musicSpinAnim }};">
+          <sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#3b3833" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></sc-if>
+          <sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b3ab9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="2" y1="2" x2="22" y2="22"></line></svg></sc-if>
+        </span>
+        <span style="{{ ctrlLblStyle }}"><span style="font-size: 13px; font-weight: 600; color: #3b3833;"><sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}">음악 끄기</sc-if><sc-if value="{{ musicOff }}" hint-placeholder-val="{{ true }}">음악 켜기</sc-if></span></span>
       </button>
     </sc-if>
-    <button onClick="{{ shareKakao }}" aria-label="카카오톡으로 공유" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16);">
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="#3b3833"><path d="M12 3C6.48 3 2 6.54 2 10.9c0 2.8 1.86 5.26 4.66 6.66l-.95 3.5c-.08.3.26.54.52.37l4.2-2.77c.51.06 1.03.1 1.57.1 5.52 0 10-3.54 10-7.86S17.52 3 12 3z"></path></svg>
+    <button onClick="{{ shareKakao }}" aria-label="카카오톡으로 공유" style="display: flex; align-items: center; min-height: 42px; padding: 0 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.93); cursor: pointer; box-shadow: 0 4px 14px rgba(50,45,35,0.16);">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="#3b3833" style="flex-shrink: 0;"><path d="M12 3C6.48 3 2 6.54 2 10.9c0 2.8 1.86 5.26 4.66 6.66l-.95 3.5c-.08.3.26.54.52.37l4.2-2.77c.51.06 1.03.1 1.57.1 5.52 0 10-3.54 10-7.86S17.52 3 12 3z"></path></svg>
+      <span style="{{ ctrlLblStyle }}"><span style="font-size: 13px; font-weight: 600; color: #3b3833;">카톡 공유</span></span>
     </button>
 
   </div>
@@ -682,6 +689,12 @@ class Component extends DCLogic {
         }
       });
     }, 300);
+    if (/[?&]view=location/.test(location.search)) {
+      location.replace('https://map.kakao.com/link/map/' + encodeURIComponent('서울대학교 엔지니어하우스') + ',37.4498,126.9535');
+      return;
+    }
+    this._ctrlSc = () => { const sh = (window.scrollY || document.documentElement.scrollTop) > 80; if (sh !== !!this.state.ctrlShrunk) this.setState({ ctrlShrunk: sh }); };
+    window.addEventListener('scroll', this._ctrlSc, { passive: true });
     // bgm
     this._tryPlay = () => {
       if (this.props.bgm === false || this._userPaused) return;
@@ -787,11 +800,11 @@ class Component extends DCLogic {
     const content = {
       title: '[속보] 진민석 ♥ 김주란 결혼',
       description: '2026년 10월 24일 토요일 오후 5시 · 서울대학교 이라운지',
-      imageUrl: url + 'images/og-tall.jpg',
+      imageUrl: url + 'images/og-tall2.jpg',
       imageWidth: 800, imageHeight: 1200,
       link: { mobileWebUrl: url, webUrl: url }
     };
-    const mapUrl = 'https://map.kakao.com/link/search/' + encodeURIComponent('서울대학교 엔지니어하우스');
+    const mapUrl = url + '?view=location';
     const evId = (this.props.kakaoCalEventId || '').trim();
     try {
       if (evId) K.Share.sendDefault({ objectType: 'calendar', idType: 'event', id: evId, content, buttons: [{ title: '청첩장 보기', link: content.link }] });
@@ -1000,6 +1013,9 @@ class Component extends DCLogic {
       rsvpMemoVal: s.rsvpMemo, onRsvpMemo: e => this.setState({ rsvpMemo: e.target.value }),
       rsvpErr: s.rsvpErr, rsvpErrShown: !!s.rsvpErr, rsvpSubmit: this.rsvpSubmit,
       shareKakao: () => this.kakaoShare(),
+      ctrlLblStyle: s.ctrlShrunk
+        ? { display: 'inline-block', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: '0px', opacity: 0, marginLeft: '0px', transition: 'max-width 0.45s ease, opacity 0.25s ease, margin-left 0.45s ease' }
+        : { display: 'inline-block', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: '80px', opacity: 1, marginLeft: '8px', transition: 'max-width 0.45s ease, opacity 0.3s ease 0.15s, margin-left 0.45s ease' },
       sheetDragStart: this._sheetStart, sheetDragMove: this._sheetMove,
       contactDragEnd: this._sheetEnd(() => this.setState({ contactOpen: false, contactClosing: false })),
       gbDragEnd: this._sheetEnd(() => this.setState({ gbOpen: false, gbClosing: false })),
