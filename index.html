@@ -280,7 +280,7 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
         </div>
         <sc-for list="{{ gbList }}" as="g" hint-placeholder-count="0">
           <div style="display: flex; flex-direction: column; gap: 8px; background: #ffffff; border: 1px solid #ece8df; border-radius: 12px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(60,55,45,0.05);">
-            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;"><span style="font-size: 14.5px; font-weight: 700; color: #3b3833;">{{ g.name }}</span><span style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 12px; color: #b3ab9c;">{{ g.when }}</span><button onClick="{{ g.onEdit }}" style="border: none; background: none; padding: 0; font-size: 12px; color: #9d968a; cursor: pointer; font-family: inherit; text-decoration: underline; text-underline-offset: 2px;">수정</button><button onClick="{{ g.onDelete }}" style="border: none; background: none; padding: 0; font-size: 12px; color: #9d968a; cursor: pointer; font-family: inherit; text-decoration: underline; text-underline-offset: 2px;">삭제</button></span></div>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;"><span style="font-size: 14.5px; font-weight: 700; color: #3b3833;">{{ g.name }}</span><span style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 12px; color: #b3ab9c;">{{ g.when }}</span><sc-if value="{{ g.hasPw }}" hint-placeholder-val="{{ false }}"><button onClick="{{ g.onEdit }}" aria-label="수정" title="수정" style="display: flex; align-items: center; border: none; background: none; padding: 2px; color: #b3ab9c; cursor: pointer;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg></button><button onClick="{{ g.onDelete }}" aria-label="삭제" title="삭제" style="display: flex; align-items: center; border: none; background: none; padding: 2px; color: #b3ab9c; cursor: pointer;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></sc-if></span></div>
             <sc-if value="{{ g.notEditing }}" hint-placeholder-val="{{ true }}">
               <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #55514a; line-height: 1.8; white-space: pre-wrap;">{{ g.message }}</p>
             </sc-if>
@@ -432,7 +432,6 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
         </div>
         <input type="text" value="{{ gbNameVal }}" onChange="{{ onGbName }}" placeholder="성함" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">
         <textarea value="{{ gbMsgVal }}" onChange="{{ onGbMsg }}" placeholder="축하 메시지를 남겨주세요" rows="3" style="width: 100%; box-sizing: border-box; padding: 12px 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; resize: none; line-height: 1.7;"></textarea>
-        <input type="password" value="{{ gbPwVal }}" onChange="{{ onGbPw }}" placeholder="비밀번호 (수정·삭제할 때 필요, 선택)" autoComplete="off" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15px; font-weight: 300; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; outline: none;">
         <sc-if value="{{ gbErrShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; color: #b6423a; text-align: center;">{{ gbErr }}</p></sc-if>
         <button onClick="{{ gbSubmit }}" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 10px; border: none; background: #3b3833; color: #f7f6f2; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">등록하기</button>
       </div>
@@ -527,6 +526,23 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
       <div style="display: flex; gap: 10px; padding: 16px; padding-bottom: max(16px, env(safe-area-inset-bottom));">
         <button onClick="{{ lbPrev }}" style="flex: 1; min-height: 52px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.35); background: none; color: #fff; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">← 이전</button>
         <button onClick="{{ lbNext }}" style="flex: 1; min-height: 52px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.35); background: none; color: #fff; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">다음 →</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pwModalShown }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; background: rgba(30,28,24,0.42); backdrop-filter: blur(3px); animation: fadeIn 0.2s ease; padding: 24px;">
+      <div style="display: flex; width: min(320px, 100%); flex-direction: column; gap: 16px; border-radius: 14px; background: #ffffff; border: 1px solid #ece8df; box-shadow: 0 18px 44px rgba(40,36,30,0.24); padding: 26px 22px;">
+        <div style="display: flex; flex-direction: column; gap: 6px; text-align: center;">
+          <p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 600; color: #3b3833;">{{ pwTitle }}</p>
+          <p style="margin: 0; font-size: 13.5px; font-weight: 300; color: #7c766b; line-height: 1.7; text-wrap: pretty;">{{ pwDesc }}</p>
+        </div>
+        <input type="password" value="{{ pwVal }}" onChange="{{ onPwChange }}" onKeyDown="{{ onPwKeyDown }}" placeholder="비밀번호" autoComplete="off" style="width: 100%; box-sizing: border-box; height: 46px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 16px; font-weight: 300; color: #3b3833; text-align: center; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; outline: none;">
+        <sc-if value="{{ pwErrShown }}" hint-placeholder-val="{{ false }}"><p style="margin: -8px 0 0; font-size: 12.5px; color: #b6423a; text-align: center;">{{ pwErr }}</p></sc-if>
+        <div style="display: flex; gap: 8px;">
+          <button onClick="{{ pwSkip }}" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 10px; border: 1px solid #ddd7cb; background: #ffffff; color: #7c766b; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">{{ pwSkipLabel }}</button>
+          <button onClick="{{ pwConfirm }}" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 10px; border: none; background: #3b3833; color: #f7f6f2; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">{{ pwOkLabel }}</button>
+        </div>
       </div>
     </div>
   </sc-if>
@@ -965,21 +981,34 @@ class Component extends DCLogic {
   }
   fmtWhen(iso) { try { const d = new Date(iso); return d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; } catch (e) { return ''; } }
   fetchGb = () => {
-    fetch(this.SB_BASE + '/guestbook?select=id,name,message,created_at&order=created_at.desc&limit=100', { headers: { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY } })
+    fetch(this.SB_BASE + '/guestbook?select=id,name,message,password,created_at&order=created_at.desc&limit=100', { headers: { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY } })
       .then(r => r.ok ? r.json() : []).then(rows => this.setState({ gbList: Array.isArray(rows) ? rows : [] })).catch(() => this.setState({ gbList: [] }));
   };
   GB_MASTER = '20261024';
   sbHdr() { return { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY, 'Content-Type': 'application/json' }; }
   gbVerify(id, cb) {
-    if (id == null) { alert('잠시 후 다시 시도해 주세요.'); return; }
-    const pw = prompt('비밀번호를 입력해 주세요');
-    if (pw == null || pw === '') return;
-    if (pw === this.GB_MASTER) { cb(); return; }
-    fetch(this.SB_BASE + '/guestbook?id=eq.' + encodeURIComponent(id) + '&password=eq.' + encodeURIComponent(pw) + '&select=id', { headers: this.sbHdr() })
-      .then(r => r.ok ? r.json() : [])
-      .then(rows => { if (Array.isArray(rows) && rows.length) cb(); else alert('비밀번호가 일치하지 않습니다.'); })
-      .catch(() => alert('확인 중 오류가 발생했습니다.'));
+    if (id == null) { this.showToast('잠시 후 다시 시도해 주세요'); return; }
+    this._pwCb = cb; this._pwId = id;
+    this.setState({ pwModal: 'ask', pwVal: '', pwErr: '' });
   }
+  pwConfirm = () => {
+    const m = this.state.pwModal; if (!m) return;
+    const pw = (this.state.pwVal || '').trim();
+    if (m === 'set') {
+      if (!pw) { this.setState({ pwErr: '비밀번호를 입력하시거나 왼쪽 버튼을 눌러주세요' }); return; }
+      this.setState({ pwModal: null }); this.gbFinishSubmit(pw); return;
+    }
+    if (!pw) { this.setState({ pwErr: '비밀번호를 입력해 주세요' }); return; }
+    if (pw === this.GB_MASTER) { const cb = this._pwCb; this.setState({ pwModal: null }); if (cb) cb(); return; }
+    fetch(this.SB_BASE + '/guestbook?id=eq.' + encodeURIComponent(this._pwId) + '&password=eq.' + encodeURIComponent(pw) + '&select=id', { headers: this.sbHdr() })
+      .then(r => r.ok ? r.json() : [])
+      .then(rows => { if (Array.isArray(rows) && rows.length) { const cb = this._pwCb; this.setState({ pwModal: null }); if (cb) cb(); } else this.setState({ pwErr: '비밀번호가 일치하지 않습니다' }); })
+      .catch(() => this.setState({ pwErr: '확인 중 오류가 발생했습니다' }));
+  };
+  pwSkip = () => {
+    if (this.state.pwModal === 'set') { this.setState({ pwModal: null }); this.gbFinishSubmit(''); }
+    else this.setState({ pwModal: null });
+  };
   gbDelete(g) {
     this.gbVerify(g.id, () => {
       this.setState({ gbList: (this.state.gbList || []).filter(x => x.id !== g.id), gbEditId: null });
@@ -998,7 +1027,11 @@ class Component extends DCLogic {
   gbSubmit = () => {
     const name = (this.state.gbName || '').trim(), message = (this.state.gbMsg || '').trim();
     if (!name || !message) { this.setState({ gbErr: '성함과 메시지를 모두 입력해 주세요' }); return; }
-    const pw = (this.state.gbPw || '').trim();
+    this.setState({ pwModal: 'set', pwVal: '', pwErr: '' });
+  };
+  gbFinishSubmit(pw) {
+    const name = (this.state.gbName || '').trim(), message = (this.state.gbMsg || '').trim();
+    if (!name || !message) return;
     const body = { name, message }; if (pw) body.password = pw;
     fetch(this.SB_BASE + '/guestbook', { method: 'POST', headers: Object.assign(this.sbHdr(), { Prefer: 'return=representation' }), body: JSON.stringify(body) })
       .then(r => {
@@ -1007,7 +1040,7 @@ class Component extends DCLogic {
       })
       .then(rows => {
         const row = rows && rows[0];
-        this.setState({ gbList: [{ id: row && row.id != null ? row.id : null, name, message, created_at: new Date().toISOString() }].concat(this.state.gbList || []), gbMsg: '', gbPw: '', gbErr: '', gbOpen: false });
+        this.setState({ gbList: [{ id: row && row.id != null ? row.id : null, name, message, password: pw || null, created_at: new Date().toISOString() }].concat(this.state.gbList || []), gbMsg: '', gbErr: '', gbOpen: false });
         this.showToast('방명록이 등록되었습니다');
       }).catch(() => this.showToast('등록에 실패했습니다. 잠시 후 다시 시도해 주세요'));
   };
@@ -1113,13 +1146,22 @@ class Component extends DCLogic {
         onEdit: () => this.gbStartEdit(g), onDelete: () => this.gbDelete(g),
         editing: s.gbEditId != null && s.gbEditId === g.id,
         notEditing: !(s.gbEditId != null && s.gbEditId === g.id),
+        hasPw: !!g.password,
       })),
+      pwModalShown: !!s.pwModal,
+      pwTitle: s.pwModal === 'set' ? '비밀번호 설정' : '비밀번호 확인',
+      pwDesc: s.pwModal === 'set' ? '비밀번호를 설정하면 나중에 글을 수정하거나 삭제할 수 있어요. 설정하지 않아도 등록됩니다.' : '글을 작성할 때 설정한 비밀번호를 입력해 주세요.',
+      pwSkipLabel: s.pwModal === 'set' ? '설정 안 함' : '취소',
+      pwOkLabel: s.pwModal === 'set' ? '설정하고 등록' : '확인',
+      pwVal: s.pwVal || '',
+      onPwChange: e => this.setState({ pwVal: e.target.value, pwErr: '' }),
+      onPwKeyDown: e => { if (e.key === 'Enter') { e.preventDefault(); this.pwConfirm(); } },
+      pwConfirm: this.pwConfirm, pwSkip: this.pwSkip,
+      pwErr: s.pwErr || '', pwErrShown: !!s.pwErr,
       gbEditMsgVal: s.gbEditMsg || '',
       onGbEditMsg: e => this.setState({ gbEditMsg: e.target.value }),
       gbCancelEdit: () => this.setState({ gbEditId: null }),
       gbSaveEdit: this.gbSaveEdit,
-      gbPwVal: s.gbPw || '',
-      onGbPw: e => this.setState({ gbPw: e.target.value }),
       gbEmptyShown: Array.isArray(s.gbList) && s.gbList.length === 0,
       gbFormShown: !!s.gbOpen, gbFormHidden: !s.gbOpen,
       gbOpenForm: () => this.setState({ gbOpen: true, gbErr: '' }),
