@@ -4,12 +4,8 @@
 <title>민석 ♡ 주란 결혼합니다</title>
 <meta property="og:title" content="민석 ♡ 주란 결혼합니다">
 <meta property="og:description" content="2026년 10월 24일 토요일 오후 5시&#10;서울대학교 이라운지">
-<meta property="og:image" content="https://minseokjin-git.github.io/Minseok-S2-Juran/images/og-mood.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://minseokjin-git.github.io/Minseok-S2-Juran/images/opt-hero.jpg">
 <meta property="og:url" content="https://minseokjin-git.github.io/Minseok-S2-Juran/">
-<meta property="og:type" content="website">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -284,8 +280,17 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
         </div>
         <sc-for list="{{ gbList }}" as="g" hint-placeholder-count="0">
           <div style="display: flex; flex-direction: column; gap: 8px; background: #ffffff; border: 1px solid #ece8df; border-radius: 12px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(60,55,45,0.05);">
-            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;"><span style="font-size: 14.5px; font-weight: 700; color: #3b3833;">{{ g.name }}</span><span style="font-size: 12px; color: #b3ab9c;">{{ g.when }}</span></div>
-            <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #55514a; line-height: 1.8; white-space: pre-wrap;">{{ g.message }}</p>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;"><span style="font-size: 14.5px; font-weight: 700; color: #3b3833;">{{ g.name }}</span><span style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 12px; color: #b3ab9c;">{{ g.when }}</span><button onClick="{{ g.onEdit }}" style="border: none; background: none; padding: 0; font-size: 12px; color: #9d968a; cursor: pointer; font-family: inherit; text-decoration: underline; text-underline-offset: 2px;">수정</button><button onClick="{{ g.onDelete }}" style="border: none; background: none; padding: 0; font-size: 12px; color: #9d968a; cursor: pointer; font-family: inherit; text-decoration: underline; text-underline-offset: 2px;">삭제</button></span></div>
+            <sc-if value="{{ g.notEditing }}" hint-placeholder-val="{{ true }}">
+              <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #55514a; line-height: 1.8; white-space: pre-wrap;">{{ g.message }}</p>
+            </sc-if>
+            <sc-if value="{{ g.editing }}" hint-placeholder-val="{{ false }}">
+              <textarea value="{{ gbEditMsgVal }}" onChange="{{ onGbEditMsg }}" rows="3" style="width: 100%; box-sizing: border-box; resize: none; border: 1px solid #ddd7cb; border-radius: 10px; background: #faf9f6; padding: 10px 12px; font-size: 14px; font-weight: 300; color: #3b3833; line-height: 1.7; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;"></textarea>
+              <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                <button onClick="{{ gbCancelEdit }}" style="display: flex; align-items: center; min-height: 38px; padding: 0 16px; border-radius: 8px; border: 1px solid #ddd7cb; background: #ffffff; color: #7c766b; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">취소</button>
+                <button onClick="{{ gbSaveEdit }}" style="display: flex; align-items: center; min-height: 38px; padding: 0 16px; border-radius: 8px; border: none; background: #3b3833; color: #f7f6f2; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">저장</button>
+              </div>
+            </sc-if>
           </div>
         </sc-for>
         <sc-if value="{{ gbEmptyShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; text-align: center; font-size: 13.5px; font-weight: 300; color: #9d968a;">첫 번째 축하 글을 남겨주세요.</p></sc-if>
@@ -427,6 +432,7 @@ if (/[?&]view=location/.test(location.search)) location.replace('https://map.kak
         </div>
         <input type="text" value="{{ gbNameVal }}" onChange="{{ onGbName }}" placeholder="성함" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">
         <textarea value="{{ gbMsgVal }}" onChange="{{ onGbMsg }}" placeholder="축하 메시지를 남겨주세요" rows="3" style="width: 100%; box-sizing: border-box; padding: 12px 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15.5px; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; resize: none; line-height: 1.7;"></textarea>
+        <input type="password" value="{{ gbPwVal }}" onChange="{{ onGbPw }}" placeholder="비밀번호 (수정·삭제할 때 필요, 선택)" autoComplete="off" style="width: 100%; box-sizing: border-box; height: 48px; padding: 0 4px; border: none; border-bottom: 1px solid #ddd7cb; background: none; font-size: 15px; font-weight: 300; color: #3b3833; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif; outline: none;">
         <sc-if value="{{ gbErrShown }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; color: #b6423a; text-align: center;">{{ gbErr }}</p></sc-if>
         <button onClick="{{ gbSubmit }}" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 10px; border: none; background: #3b3833; color: #f7f6f2; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Yoon Gothic', 'Noto Sans KR', sans-serif;">등록하기</button>
       </div>
@@ -797,7 +803,7 @@ class Component extends DCLogic {
     this._tryPlay = () => {
       if (this.props.bgm === false || this._userPaused) return;
       const a = this.audioRef.current;
-      if (a && a.paused) { a.volume = 0.5; a.play().then(() => { this.setState({ playing: true }); this._unkick(); }).catch(() => {}); }
+      if (a && a.paused) { a.volume = 0.3; a.play().then(() => { this.setState({ playing: true }); this._unkick(); }).catch(() => {}); }
     };
     this._kick = () => this._tryPlay();
     this._unkick = () => ['pointerdown', 'touchend', 'keydown', 'scroll'].forEach(ev => window.removeEventListener(ev, this._kick));
@@ -959,16 +965,49 @@ class Component extends DCLogic {
   }
   fmtWhen(iso) { try { const d = new Date(iso); return d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; } catch (e) { return ''; } }
   fetchGb = () => {
-    fetch(this.SB_BASE + '/guestbook?select=name,message,created_at&order=created_at.desc&limit=100', { headers: { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY } })
+    fetch(this.SB_BASE + '/guestbook?select=id,name,message,created_at&order=created_at.desc&limit=100', { headers: { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY } })
       .then(r => r.ok ? r.json() : []).then(rows => this.setState({ gbList: Array.isArray(rows) ? rows : [] })).catch(() => this.setState({ gbList: [] }));
+  };
+  GB_MASTER = '20261024';
+  sbHdr() { return { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY, 'Content-Type': 'application/json' }; }
+  gbVerify(id, cb) {
+    if (id == null) { alert('잠시 후 다시 시도해 주세요.'); return; }
+    const pw = prompt('비밀번호를 입력해 주세요');
+    if (pw == null || pw === '') return;
+    if (pw === this.GB_MASTER) { cb(); return; }
+    fetch(this.SB_BASE + '/guestbook?id=eq.' + encodeURIComponent(id) + '&password=eq.' + encodeURIComponent(pw) + '&select=id', { headers: this.sbHdr() })
+      .then(r => r.ok ? r.json() : [])
+      .then(rows => { if (Array.isArray(rows) && rows.length) cb(); else alert('비밀번호가 일치하지 않습니다.'); })
+      .catch(() => alert('확인 중 오류가 발생했습니다.'));
+  }
+  gbDelete(g) {
+    this.gbVerify(g.id, () => {
+      this.setState({ gbList: (this.state.gbList || []).filter(x => x.id !== g.id), gbEditId: null });
+      fetch(this.SB_BASE + '/guestbook?id=eq.' + encodeURIComponent(g.id), { method: 'DELETE', headers: this.sbHdr() }).catch(() => {});
+      this.showToast('방명록이 삭제되었습니다');
+    });
+  }
+  gbStartEdit(g) { this.gbVerify(g.id, () => this.setState({ gbEditId: g.id, gbEditMsg: g.message })); }
+  gbSaveEdit = () => {
+    const t = (this.state.gbEditMsg || '').trim(); if (!t) return;
+    const id = this.state.gbEditId;
+    fetch(this.SB_BASE + '/guestbook?id=eq.' + encodeURIComponent(id), { method: 'PATCH', headers: this.sbHdr(), body: JSON.stringify({ message: t }) }).catch(() => {});
+    this.setState({ gbList: (this.state.gbList || []).map(x => x.id === id ? Object.assign({}, x, { message: t }) : x), gbEditId: null });
+    this.showToast('방명록이 수정되었습니다');
   };
   gbSubmit = () => {
     const name = (this.state.gbName || '').trim(), message = (this.state.gbMsg || '').trim();
     if (!name || !message) { this.setState({ gbErr: '성함과 메시지를 모두 입력해 주세요' }); return; }
-    fetch(this.SB_BASE + '/guestbook', { method: 'POST', headers: { apikey: this.SB_KEY, Authorization: 'Bearer ' + this.SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify({ name, message }) })
+    const pw = (this.state.gbPw || '').trim();
+    const body = { name, message }; if (pw) body.password = pw;
+    fetch(this.SB_BASE + '/guestbook', { method: 'POST', headers: Object.assign(this.sbHdr(), { Prefer: 'return=representation' }), body: JSON.stringify(body) })
       .then(r => {
         if (!r.ok) throw 0;
-        this.setState({ gbList: [{ name, message, created_at: new Date().toISOString() }].concat(this.state.gbList || []), gbMsg: '', gbErr: '', gbOpen: false });
+        return r.json().catch(() => null);
+      })
+      .then(rows => {
+        const row = rows && rows[0];
+        this.setState({ gbList: [{ id: row && row.id != null ? row.id : null, name, message, created_at: new Date().toISOString() }].concat(this.state.gbList || []), gbMsg: '', gbPw: '', gbErr: '', gbOpen: false });
         this.showToast('방명록이 등록되었습니다');
       }).catch(() => this.showToast('등록에 실패했습니다. 잠시 후 다시 시도해 주세요'));
   };
@@ -1032,7 +1071,7 @@ class Component extends DCLogic {
       musicSpinAnim: s.playing ? 'musicSpin 3s linear infinite' : 'none',
       toggleMusic: () => {
         const a = this.audioRef.current; if (!a) return;
-        if (a.paused) { this._userPaused = false; a.volume = 0.5; a.play().then(() => this.setState({ playing: true })).catch(() => {}); }
+        if (a.paused) { this._userPaused = false; a.volume = 0.3; a.play().then(() => this.setState({ playing: true })).catch(() => {}); }
         else { this._userPaused = true; a.pause(); this.setState({ playing: false }); }
       },
       audioRef: this.audioRef,
@@ -1069,7 +1108,18 @@ class Component extends DCLogic {
       lbClose: () => this.setState({ lbOpen: false }),
       lbPrev: () => this.setState({ lbIdx: (s.lbIdx + this.imgs.length - 1) % this.imgs.length }),
       lbNext: () => this.setState({ lbIdx: (s.lbIdx + 1) % this.imgs.length }),
-      gbList: (s.gbList || []).map(g => ({ name: g.name, message: g.message, when: this.fmtWhen(g.created_at) })),
+      gbList: (s.gbList || []).map(g => ({
+        name: g.name, message: g.message, when: this.fmtWhen(g.created_at),
+        onEdit: () => this.gbStartEdit(g), onDelete: () => this.gbDelete(g),
+        editing: s.gbEditId != null && s.gbEditId === g.id,
+        notEditing: !(s.gbEditId != null && s.gbEditId === g.id),
+      })),
+      gbEditMsgVal: s.gbEditMsg || '',
+      onGbEditMsg: e => this.setState({ gbEditMsg: e.target.value }),
+      gbCancelEdit: () => this.setState({ gbEditId: null }),
+      gbSaveEdit: this.gbSaveEdit,
+      gbPwVal: s.gbPw || '',
+      onGbPw: e => this.setState({ gbPw: e.target.value }),
       gbEmptyShown: Array.isArray(s.gbList) && s.gbList.length === 0,
       gbFormShown: !!s.gbOpen, gbFormHidden: !s.gbOpen,
       gbOpenForm: () => this.setState({ gbOpen: true, gbErr: '' }),
